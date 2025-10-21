@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bundesliga Team Analytics - Performance Comparison</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bundesliga Team Analytics</h1>
+            <p class="subtitle">Season 25/26 Team Performance Comparison and Statistics</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Team Selector -->
+            <section class="team-selector-section">
+                <h2>Select Teams</h2>
+                <div class="search-box">
+                    <input type="text" id="teamSearch" placeholder="Search teams...">
+                </div>
+                <div id="teamList" class="team-list">
+                    <div class="loading">Loading teams...</div>
+                </div>
+            </section>
+
+            <!-- Main Content Area -->
+            <main class="content-area">
+                <!-- Goals Statistics -->
+                <div class="goals-stats" id="goalsStats">
+                    <!-- Stats will be populated here -->
+                </div>
+
+                <!-- Selected Teams Display -->
+                <div class="selected-teams">
+                    <h2>Selected Teams for Comparison</h2>
+                    <div id="selectedTeams" class="teams-chips">
+                        <p class="empty-state">Select teams from above to start comparing</p>
+                    </div>
+                    <button id="clearSelection" class="btn-secondary">Clear Selection</button>
+                </div>
+
+                <!-- Goals List -->
+                <div class="goals-list" id="goalsList">
+                    <!-- Goals will be populated here -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+

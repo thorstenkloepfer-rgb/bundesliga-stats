@@ -1,7 +1,13 @@
 // Bundesliga Goals Tracker App
-// Data source: https://fbref.com/en/comps/20/Bundesliga-Stats
+// Data sources:
+// Bundesliga (Men): https://fbref.com/en/comps/20/Bundesliga-Stats
+// Frauen-Bundesliga: https://fbref.com/en/comps/183/Frauen-Bundesliga-Stats
+// 2. Bundesliga: https://fbref.com/en/comps/33/2-Bundesliga-Stats
 
-// Bundesliga teams data (2024/25 season) with FBRef statistics
+// State for current league view
+let currentLeague = 'bundesliga';
+
+// Bundesliga teams data (2025/26 season) with FBRef statistics
 const bundesligaTeams = [
     {
         id: 'bayern',
@@ -13,6 +19,7 @@ const bundesligaTeams = [
         logoFallback: 'https://ui-avatars.com/api/?name=FCB&size=50&background=DC0714&color=fff&bold=true',
         slug: 'fc-bayern-muenchen',
         color: '#DC0714',
+        secondaryColor: '#0066B2',
         stats: {
             performance: 85,
             progression: 88,
@@ -33,7 +40,8 @@ const bundesligaTeams = [
         logo: 'https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg',
         logoFallback: 'https://ui-avatars.com/api/?name=BVB&size=50&background=FDE100&color=000&bold=true',
         slug: 'borussia-dortmund',
-        color: '#FDE100',
+        color: '#FFFFFF',
+        secondaryColor: '#FDE100',
         stats: {
             performance: 82,
             progression: 85,
@@ -55,6 +63,7 @@ const bundesligaTeams = [
         logoFallback: 'https://ui-avatars.com/api/?name=RBL&size=50&background=DD0741&color=fff&bold=true',
         slug: 'rb-leipzig',
         color: '#DD0741',
+        secondaryColor: '#0045A0',
         stats: {
             performance: 80,
             progression: 90,
@@ -76,6 +85,7 @@ const bundesligaTeams = [
         logoFallback: 'https://ui-avatars.com/api/?name=B04&size=50&background=E32221&color=fff&bold=true',
         slug: 'bayer-04-leverkusen',
         color: '#E32221',
+        secondaryColor: '#000000',
         stats: {
             performance: 86,
             progression: 87,
@@ -97,6 +107,7 @@ const bundesligaTeams = [
         logoFallback: 'https://ui-avatars.com/api/?name=SGE&size=50&background=E1000F&color=fff&bold=true',
         slug: 'eintracht-frankfurt',
         color: '#E1000F',
+        secondaryColor: '#000000',
         stats: {
             performance: 76,
             progression: 82,
@@ -118,6 +129,7 @@ const bundesligaTeams = [
         logoFallback: 'https://ui-avatars.com/api/?name=VFB&size=50&background=E32219&color=fff&bold=true',
         slug: 'vfb-stuttgart',
         color: '#E32219',
+        secondaryColor: '#FFFFFF',
         stats: {
             performance: 78,
             progression: 83,
@@ -139,6 +151,7 @@ const bundesligaTeams = [
         logoFallback: 'https://ui-avatars.com/api/?name=FCU&size=50&background=EB0029&color=fff&bold=true',
         slug: '1-fc-union-berlin',
         color: '#EB0029',
+        secondaryColor: '#F4C300',
         stats: {
             performance: 72,
             progression: 75,
@@ -160,6 +173,7 @@ const bundesligaTeams = [
         logoFallback: 'https://ui-avatars.com/api/?name=SCF&size=50&background=FF0000&color=fff&bold=true',
         slug: 'sc-freiburg',
         color: '#FF0000',
+        secondaryColor: '#000000',
         stats: {
             performance: 74,
             progression: 78,
@@ -180,7 +194,8 @@ const bundesligaTeams = [
         logo: 'https://upload.wikimedia.org/wikipedia/commons/8/81/Borussia_M%C3%B6nchengladbach_logo.svg',
         logoFallback: 'https://ui-avatars.com/api/?name=BMG&size=50&background=000000&color=fff&bold=true',
         slug: 'borussia-moenchengladbach',
-        color: '#000000',
+        color: '#FFFFFF',
+        secondaryColor: '#000000',
         stats: {
             performance: 73,
             progression: 76,
@@ -202,6 +217,7 @@ const bundesligaTeams = [
         logoFallback: 'https://ui-avatars.com/api/?name=VFL&size=50&background=65B32E&color=fff&bold=true',
         slug: 'vfl-wolfsburg',
         color: '#65B32E',
+        secondaryColor: '#FFFFFF',
         stats: {
             performance: 71,
             progression: 74,
@@ -223,6 +239,7 @@ const bundesligaTeams = [
         logoFallback: 'https://ui-avatars.com/api/?name=TSG&size=50&background=1961B5&color=fff&bold=true',
         slug: 'tsg-1899-hoffenheim',
         color: '#1961B5',
+        secondaryColor: '#FFFFFF',
         stats: {
             performance: 75,
             progression: 77,
@@ -244,6 +261,7 @@ const bundesligaTeams = [
         logoFallback: 'https://ui-avatars.com/api/?name=M05&size=50&background=C3151C&color=fff&bold=true',
         slug: '1-fsv-mainz-05',
         color: '#C3151C',
+        secondaryColor: '#FFFFFF',
         stats: {
             performance: 70,
             progression: 72,
@@ -265,6 +283,7 @@ const bundesligaTeams = [
         logoFallback: 'https://ui-avatars.com/api/?name=FCA&size=50&background=BA3733&color=fff&bold=true',
         slug: 'fc-augsburg',
         color: '#BA3733',
+        secondaryColor: '#FFFFFF',
         stats: {
             performance: 68,
             progression: 70,
@@ -286,6 +305,7 @@ const bundesligaTeams = [
         logoFallback: 'https://ui-avatars.com/api/?name=SVW&size=50&background=1D9053&color=fff&bold=true',
         slug: 'sv-werder-bremen',
         color: '#1D9053',
+        secondaryColor: '#FFFFFF',
         stats: {
             performance: 72,
             progression: 74,
@@ -307,6 +327,7 @@ const bundesligaTeams = [
         logoFallback: 'https://ui-avatars.com/api/?name=BOC&size=50&background=005CA9&color=fff&bold=true',
         slug: 'vfl-bochum-1848',
         color: '#005CA9',
+        secondaryColor: '#FFFFFF',
         stats: {
             performance: 65,
             progression: 68,
@@ -328,6 +349,7 @@ const bundesligaTeams = [
         logoFallback: 'https://ui-avatars.com/api/?name=FCH&size=50&background=E30613&color=fff&bold=true',
         slug: '1-fc-heidenheim-1846',
         color: '#E30613',
+        secondaryColor: '#004A9F',
         stats: {
             performance: 66,
             progression: 69,
@@ -349,6 +371,7 @@ const bundesligaTeams = [
         logoFallback: 'https://ui-avatars.com/api/?name=STP&size=50&background=623F33&color=fff&bold=true',
         slug: 'fc-st-pauli',
         color: '#623F33',
+        secondaryColor: '#FFFFFF',
         stats: {
             performance: 69,
             progression: 71,
@@ -370,6 +393,7 @@ const bundesligaTeams = [
         logoFallback: 'https://ui-avatars.com/api/?name=KSV&size=50&background=003C8F&color=fff&bold=true',
         slug: 'holstein-kiel',
         color: '#003C8F',
+        secondaryColor: '#FFFFFF',
         stats: {
             performance: 64,
             progression: 66,
@@ -382,6 +406,401 @@ const bundesligaTeams = [
         }
     }
 ];
+
+// Frauen-Bundesliga teams data (2025/26 season)
+const frauenBundesligaTeams = [
+    {
+        id: 'bayern-women',
+        name: 'FC Bayern München',
+        shortName: 'Bayern (W)',
+        league: 'frauen',
+        goals: 21,
+        topScorer: 'Klara Bühl',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/1/1b/FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=FCB&size=50&background=DC0714&color=fff&bold=true',
+        slug: 'bayern-munich-women',
+        color: '#DC0714',
+        secondaryColor: '#0066B2',
+        stats: {
+            performance: 90,
+            progression: 92,
+            penaltyKicks: 78,
+            goals: 95,
+            passes: 91,
+            goalKicks: 80,
+            crosses: 85,
+            sweeper: 88
+        }
+    },
+    {
+        id: 'wolfsburg-women',
+        name: 'VfL Wolfsburg',
+        shortName: 'Wolfsburg (W)',
+        league: 'frauen',
+        goals: 26,
+        topScorer: 'Lineth Beerensteyn',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/f/f3/Logo-VfL-Wolfsburg.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=VFL&size=50&background=65B32E&color=fff&bold=true',
+        slug: 'wolfsburg-women',
+        color: '#65B32E',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 88,
+            progression: 90,
+            penaltyKicks: 76,
+            goals: 92,
+            passes: 89,
+            goalKicks: 78,
+            crosses: 83,
+            sweeper: 86
+        }
+    },
+    {
+        id: 'hoffenheim-women',
+        name: 'TSG 1899 Hoffenheim',
+        shortName: 'Hoffenheim (W)',
+        league: 'frauen',
+        goals: 18,
+        topScorer: 'Selina Cerci',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/6/64/TSG_1899_Hoffenheim_logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=TSG&size=50&background=1961B5&color=fff&bold=true',
+        slug: 'hoffenheim-women',
+        color: '#1961B5',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 82,
+            progression: 84,
+            penaltyKicks: 72,
+            goals: 85,
+            passes: 83,
+            goalKicks: 74,
+            crosses: 79,
+            sweeper: 80
+        }
+    },
+    {
+        id: 'frankfurt-women',
+        name: 'Eintracht Frankfurt',
+        shortName: 'Frankfurt (W)',
+        league: 'frauen',
+        goals: 17,
+        topScorer: 'Laura Freigang',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/0/04/Eintracht_Frankfurt_Logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=SGE&size=50&background=E1000F&color=fff&bold=true',
+        slug: 'frankfurt-women',
+        color: '#E1000F',
+        secondaryColor: '#000000',
+        stats: {
+            performance: 80,
+            progression: 82,
+            penaltyKicks: 70,
+            goals: 83,
+            passes: 81,
+            goalKicks: 72,
+            crosses: 77,
+            sweeper: 78
+        }
+    },
+    {
+        id: 'leverkusen-women',
+        name: 'Bayer 04 Leverkusen',
+        shortName: 'Leverkusen (W)',
+        league: 'frauen',
+        goals: 16,
+        topScorer: 'Kristin Kögel',
+        logo: 'https://upload.wikimedia.org/wikipedia/en/5/59/Bayer_04_Leverkusen_logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=B04&size=50&background=E32221&color=fff&bold=true',
+        slug: 'leverkusen-women',
+        color: '#E32221',
+        secondaryColor: '#000000',
+        stats: {
+            performance: 78,
+            progression: 80,
+            penaltyKicks: 68,
+            goals: 81,
+            passes: 79,
+            goalKicks: 70,
+            crosses: 75,
+            sweeper: 76
+        }
+    },
+    {
+        id: 'bremen-women',
+        name: 'SV Werder Bremen',
+        shortName: 'Werder (W)',
+        league: 'frauen',
+        goals: 14,
+        topScorer: 'Larissa Mühlhaus',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/b/be/SV-Werder-Bremen-Logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=SVW&size=50&background=1D9053&color=fff&bold=true',
+        slug: 'werder-women',
+        color: '#1D9053',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 75,
+            progression: 77,
+            penaltyKicks: 65,
+            goals: 78,
+            passes: 76,
+            goalKicks: 68,
+            crosses: 72,
+            sweeper: 73
+        }
+    }
+];
+
+// 2. Bundesliga teams data (2025/26 season)
+const bundesliga2Teams = [
+    {
+        id: 'koeln-2',
+        name: '1. FC Köln',
+        shortName: 'Köln',
+        league: 'bundesliga2',
+        goals: 35,
+        topScorer: 'Tim Lemperle',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/f/f2/Logo-fc-koeln.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=FCK&size=50&background=ED1C24&color=fff&bold=true',
+        slug: 'fc-koeln',
+        color: '#ED1C24',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 82,
+            progression: 84,
+            penaltyKicks: 72,
+            goals: 86,
+            passes: 83,
+            goalKicks: 74,
+            crosses: 79,
+            sweeper: 80
+        }
+    },
+    {
+        id: 'hsv-2',
+        name: 'Hamburger SV',
+        shortName: 'Hamburg',
+        league: 'bundesliga2',
+        goals: 38,
+        topScorer: 'Robert Glatzel',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/6/66/HSV-Logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=HSV&size=50&background=0066B2&color=fff&bold=true',
+        slug: 'hamburger-sv',
+        color: '#0066B2',
+        secondaryColor: '#000000',
+        stats: {
+            performance: 84,
+            progression: 86,
+            penaltyKicks: 74,
+            goals: 88,
+            passes: 85,
+            goalKicks: 76,
+            crosses: 81,
+            sweeper: 82
+        }
+    },
+    {
+        id: 'schalke-2',
+        name: 'FC Schalke 04',
+        shortName: 'Schalke',
+        league: 'bundesliga2',
+        goals: 32,
+        topScorer: 'Moussa Sylla',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/6/6d/FC_Schalke_04_Logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=S04&size=50&background=004D9D&color=fff&bold=true',
+        slug: 'schalke-04',
+        color: '#004D9D',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 78,
+            progression: 80,
+            penaltyKicks: 68,
+            goals: 82,
+            passes: 79,
+            goalKicks: 70,
+            crosses: 75,
+            sweeper: 76
+        }
+    },
+    {
+        id: 'hertha-2',
+        name: 'Hertha BSC',
+        shortName: 'Hertha',
+        league: 'bundesliga2',
+        goals: 30,
+        topScorer: 'Haris Tabakovic',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/8/81/Hertha_BSC_Logo_2012.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=BSC&size=50&background=005CA9&color=fff&bold=true',
+        slug: 'hertha-bsc',
+        color: '#005CA9',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 76,
+            progression: 78,
+            penaltyKicks: 66,
+            goals: 80,
+            passes: 77,
+            goalKicks: 68,
+            crosses: 73,
+            sweeper: 74
+        }
+    },
+    {
+        id: 'fortuna-2',
+        name: 'Fortuna Düsseldorf',
+        shortName: 'Düsseldorf',
+        league: 'bundesliga2',
+        goals: 29,
+        topScorer: 'Vincent Vermeij',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/9/94/Fortuna_D%C3%BCsseldorf.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=F95&size=50&background=CC0000&color=fff&bold=true',
+        slug: 'fortuna-duesseldorf',
+        color: '#CC0000',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 74,
+            progression: 76,
+            penaltyKicks: 64,
+            goals: 78,
+            passes: 75,
+            goalKicks: 66,
+            crosses: 71,
+            sweeper: 72
+        }
+    },
+    {
+        id: 'paderborn-2',
+        name: 'SC Paderborn 07',
+        shortName: 'Paderborn',
+        league: 'bundesliga2',
+        goals: 27,
+        topScorer: 'Sven Michel',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/e/e4/SC_Paderborn_07.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=SCP&size=50&background=005CA9&color=fff&bold=true',
+        slug: 'sc-paderborn',
+        color: '#005CA9',
+        secondaryColor: '#000000',
+        stats: {
+            performance: 72,
+            progression: 74,
+            penaltyKicks: 62,
+            goals: 76,
+            passes: 73,
+            goalKicks: 64,
+            crosses: 69,
+            sweeper: 70
+        }
+    }
+];
+
+// --- Utility to complete league team lists with placeholders ---
+function slugify(text) {
+    return text
+        .toString()
+        .toLowerCase()
+        .normalize('NFD').replace(/\p{Diacritic}/gu, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)+/g, '');
+}
+
+const colorPalette = [
+    '#DC0714', '#0066B2', '#DD0741', '#0045A0', '#E32221', '#000000', '#FDE100', '#1D9053',
+    '#65B32E', '#003C8F', '#C3151C', '#005CA9', '#623F33', '#E30613', '#FF6F00', '#7B1FA2'
+];
+
+function pickColorFromId(id) {
+    let sum = 0;
+    for (let i = 0; i < id.length; i++) sum = (sum + id.charCodeAt(i)) >>> 0;
+    return colorPalette[sum % colorPalette.length];
+}
+
+function createPlaceholderTeam(entry, leagueKey) {
+    const baseColor = pickColorFromId(entry.id);
+    const avatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(entry.shortName || entry.name)}&size=50&background=${baseColor.replace('#', '')}&color=fff&bold=true`;
+    return {
+        id: entry.id,
+        name: entry.name,
+        shortName: entry.shortName || entry.name,
+        league: leagueKey,
+        goals: typeof entry.goals === 'number' ? entry.goals : 0,
+        topScorer: entry.topScorer || '-',
+        logo: avatar,
+        logoFallback: avatar,
+        slug: entry.slug || slugify(entry.name),
+        color: baseColor,
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 70,
+            progression: 70,
+            penaltyKicks: 70,
+            goals: 0,
+            passes: 70,
+            goalKicks: 70,
+            crosses: 70,
+            sweeper: 70
+        }
+    };
+}
+
+function completeLeagueTeams(existingTeams, catalog, leagueKey) {
+    const byId = Object.fromEntries(existingTeams.map(t => [t.id, t]));
+    return catalog.map(entry => {
+        const existing = byId[entry.id];
+        if (existing) {
+            return {
+                ...existing,
+                shortName: existing.shortName || entry.shortName || existing.name,
+                league: existing.league || leagueKey
+            };
+        }
+        return createPlaceholderTeam(entry, leagueKey);
+    });
+}
+
+// Catalogs to ensure complete league coverage
+const FRAUEN_TEAM_CATALOG = [
+    { id: 'bayern-women', name: 'FC Bayern München', shortName: 'Bayern (W)' },
+    { id: 'wolfsburg-women', name: 'VfL Wolfsburg', shortName: 'Wolfsburg (W)' },
+    { id: 'hoffenheim-women', name: 'TSG 1899 Hoffenheim', shortName: 'Hoffenheim (W)' },
+    { id: 'frankfurt-women', name: 'Eintracht Frankfurt', shortName: 'Frankfurt (W)' },
+    { id: 'leverkusen-women', name: 'Bayer 04 Leverkusen', shortName: 'Leverkusen (W)' },
+    { id: 'bremen-women', name: 'SV Werder Bremen', shortName: 'Werder (W)' },
+    { id: 'leipzig-women', name: 'RB Leipzig', shortName: 'Leipzig (W)' },
+    { id: 'essen-women', name: 'SGS Essen', shortName: 'Essen (W)' },
+    { id: 'freiburg-women', name: 'SC Freiburg', shortName: 'Freiburg (W)' },
+    { id: 'koeln-women', name: '1. FC Köln', shortName: 'Köln (W)' },
+    { id: 'nuernberg-women', name: '1. FC Nürnberg', shortName: 'Nürnberg (W)' },
+    { id: 'jena-women', name: 'FC Carl Zeiss Jena', shortName: 'Jena (W)' }
+];
+
+const BUNDESLIGA2_TEAM_CATALOG = [
+    { id: 'koeln-2', name: '1. FC Köln', shortName: 'Köln' },
+    { id: 'hsv-2', name: 'Hamburger SV', shortName: 'Hamburg' },
+    { id: 'schalke-2', name: 'FC Schalke 04', shortName: 'Schalke' },
+    { id: 'hertha-2', name: 'Hertha BSC', shortName: 'Hertha' },
+    { id: 'fortuna-2', name: 'Fortuna Düsseldorf', shortName: 'Düsseldorf' },
+    { id: 'paderborn-2', name: 'SC Paderborn 07', shortName: 'Paderborn' },
+    { id: 'hannover-2', name: 'Hannover 96', shortName: 'Hannover' },
+    { id: 'nuernberg-2', name: '1. FC Nürnberg', shortName: 'Nürnberg' },
+    { id: 'fuerth-2', name: 'SpVgg Greuther Fürth', shortName: 'Fürth' },
+    { id: 'karlsruhe-2', name: 'Karlsruher SC', shortName: 'Karlsruhe' },
+    { id: 'kaiserslautern-2', name: '1. FC Kaiserslautern', shortName: 'Kaiserslautern' },
+    { id: 'elversberg-2', name: 'SV Elversberg', shortName: 'Elversberg' },
+    { id: 'rostock-2', name: 'Hansa Rostock', shortName: 'Rostock' },
+    { id: 'braunschweig-2', name: 'Eintracht Braunschweig', shortName: 'Braunschweig' },
+    { id: 'magdeburg-2', name: '1. FC Magdeburg', shortName: 'Magdeburg' },
+    { id: 'regensburg-2', name: 'SSV Jahn Regensburg', shortName: 'Regensburg' },
+    { id: 'osnabrueck-2', name: 'VfL Osnabrück', shortName: 'Osnabrück' },
+    { id: 'bochum-2', name: 'VfL Bochum', shortName: 'Bochum' }
+];
+
+const completedFrauenTeams = completeLeagueTeams(frauenBundesligaTeams, FRAUEN_TEAM_CATALOG, 'frauen');
+const completedBundesliga2Teams = completeLeagueTeams(bundesliga2Teams, BUNDESLIGA2_TEAM_CATALOG, 'bundesliga2');
+
+// Combined teams object
+const allLeagues = {
+    bundesliga: bundesligaTeams,
+    frauen: completedFrauenTeams,
+    bundesliga2: completedBundesliga2Teams
+};
 
 // Stat categories for radar chart
 const statCategories = [
@@ -546,6 +965,65 @@ const sampleGoals = {
 
 // State management
 let selectedTeams = [];
+let persistentTeamColors = {}; // Store assigned colors persistently
+
+// Color similarity detection
+function colorDistance(color1, color2) {
+    // Convert hex to RGB
+    const hexToRgb = (hex) => {
+        const r = parseInt(hex.slice(1, 3), 16);
+        const g = parseInt(hex.slice(3, 5), 16);
+        const b = parseInt(hex.slice(5, 7), 16);
+        return { r, g, b };
+    };
+    
+    const rgb1 = hexToRgb(color1);
+    const rgb2 = hexToRgb(color2);
+    
+    // Calculate Euclidean distance in RGB space
+    return Math.sqrt(
+        Math.pow(rgb1.r - rgb2.r, 2) +
+        Math.pow(rgb1.g - rgb2.g, 2) +
+        Math.pow(rgb1.b - rgb2.b, 2)
+    );
+}
+
+// Assign colors to selected teams, avoiding conflicts
+function assignTeamColors(teams) {
+    const colorThreshold = 80; // Colors closer than this are considered too similar
+    const assignedColors = [];
+    
+    return teams.map((team, index) => {
+        // If team already has an assigned color, use it
+        if (persistentTeamColors[team.id]) {
+            assignedColors.push(persistentTeamColors[team.id]);
+            return {
+                ...team,
+                displayColor: persistentTeamColors[team.id]
+            };
+        }
+        
+        // Otherwise, assign a new color
+        let colorToUse = team.color;
+        
+        // Check if this color conflicts with any already assigned colors
+        for (let i = 0; i < assignedColors.length; i++) {
+            if (colorDistance(colorToUse, assignedColors[i]) < colorThreshold) {
+                // Try secondary color
+                colorToUse = team.secondaryColor || team.color;
+                break;
+            }
+        }
+        
+        assignedColors.push(colorToUse);
+        persistentTeamColors[team.id] = colorToUse; // Store for future use
+        
+        return {
+            ...team,
+            displayColor: colorToUse
+        };
+    });
+}
 
 // Initialize app
 document.addEventListener('DOMContentLoaded', () => {
@@ -557,10 +1035,16 @@ function initApp() {
     setupEventListeners();
 }
 
+// Get current league teams
+function getCurrentLeagueTeams() {
+    return allLeagues[currentLeague] || bundesligaTeams;
+}
+
 // Render team list in sidebar
 function renderTeamList(filterText = '') {
     const teamList = document.getElementById('teamList');
-    const filteredTeams = bundesligaTeams.filter(team => 
+    const teams = getCurrentLeagueTeams();
+    const filteredTeams = teams.filter(team => 
         team.name.toLowerCase().includes(filterText.toLowerCase())
     );
 
@@ -594,14 +1078,21 @@ function setupEventListeners() {
         }
     });
 
-    // Search
-    document.getElementById('teamSearch').addEventListener('input', (e) => {
-        renderTeamList(e.target.value);
+    // League selector
+    document.getElementById('leagueSelector').addEventListener('change', (e) => {
+        currentLeague = e.target.value;
+        renderTeamList();
     });
+
+    // Search (commented out - search box is hidden)
+    // document.getElementById('teamSearch').addEventListener('input', (e) => {
+    //     renderTeamList(e.target.value);
+    // });
 
     // Clear selection
     document.getElementById('clearSelection').addEventListener('click', () => {
         selectedTeams = [];
+        persistentTeamColors = {}; // Reset color assignments when clearing
         updateUI();
     });
 }
@@ -611,6 +1102,7 @@ function toggleTeamSelection(teamId) {
     const index = selectedTeams.indexOf(teamId);
     if (index > -1) {
         selectedTeams.splice(index, 1);
+        // Don't remove from persistentTeamColors to maintain consistency
     } else {
         selectedTeams.push(teamId);
     }
@@ -620,7 +1112,6 @@ function toggleTeamSelection(teamId) {
 // Update UI based on selection
 function updateUI() {
     updateSelectedState();
-    renderSelectedTeams();
     renderGoalsStats();
     renderGoalsList();
 }
@@ -638,51 +1129,31 @@ function updateSelectedState() {
     });
 }
 
-// Render selected teams chips
-function renderSelectedTeams() {
-    const container = document.getElementById('selectedTeams');
-    
-    if (selectedTeams.length === 0) {
-        container.innerHTML = '<p class="empty-state">Select teams from the sidebar to start comparing</p>';
-        return;
-    }
-
-    const teams = selectedTeams.map(id => bundesligaTeams.find(t => t.id === id));
-    container.innerHTML = teams.map(team => `
-        <div class="team-chip">
-            <img src="${team.logo}" alt="${team.name}" onerror="this.onerror=null; this.src='${team.logoFallback}';">
-            <span>${team.shortName}</span>
-            <span class="remove" onclick="removeTeam('${team.id}')">✕</span>
-        </div>
-    `).join('');
-}
-
-// Remove team from selection
-function removeTeam(teamId) {
-    selectedTeams = selectedTeams.filter(id => id !== teamId);
-    updateUI();
-}
 
 // Generate Radar Chart SVG
 function generateRadarChart(teams) {
     if (teams.length === 0) return '';
     
-    const size = 700;
+    const size = 1050; // Increased by 20% from 875
     const center = size / 2;
-    const maxRadius = 200;
+    const maxRadius = 300; // Increased by 20% from 250
     const levels = 5;
     const angleStep = (Math.PI * 2) / statCategories.length;
+    const goalsArray = teams.map(t => (typeof t.goals === 'number' ? t.goals : 0));
+    const maxGoals = Math.max(1, ...goalsArray);
     
     // Calculate points for a team
     function getTeamPoints(team) {
         return statCategories.map((cat, index) => {
-            const value = team.stats[cat.key];
-            const radius = (value / 100) * maxRadius;
+            const isGoals = cat.key === 'goals';
+            const rawValue = isGoals ? (team.goals || 0) : team.stats[cat.key];
+            const valueForRadius = isGoals ? Math.min(100, (rawValue / maxGoals) * 100) : rawValue;
+            const radius = (valueForRadius / 100) * maxRadius;
             const angle = angleStep * index - Math.PI / 2;
             return {
                 x: center + radius * Math.cos(angle),
                 y: center + radius * Math.sin(angle),
-                value: value
+                value: rawValue
             };
         });
     }
@@ -692,19 +1163,12 @@ function generateRadarChart(teams) {
         return points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ') + ' Z';
     }
     
-    // Generate grid lines (concentric polygons)
+    // Generate grid lines (concentric circles)
     let gridLines = '';
     for (let level = 1; level <= levels; level++) {
         const radius = (maxRadius / levels) * level;
-        const points = statCategories.map((_, index) => {
-            const angle = angleStep * index - Math.PI / 2;
-            return {
-                x: center + radius * Math.cos(angle),
-                y: center + radius * Math.sin(angle)
-            };
-        });
         const opacity = level === levels ? 0.3 : 0.1;
-        gridLines += `<polygon points="${points.map(p => `${p.x},${p.y}`).join(' ')}" 
+        gridLines += `<circle cx="${center}" cy="${center}" r="${radius}" 
             fill="none" stroke="rgba(255, 255, 255, ${opacity})" stroke-width="1" />`;
     }
     
@@ -729,7 +1193,7 @@ function generateRadarChart(teams) {
         labels += `
             <g class="radar-label">
                 <text x="${x}" y="${y + 4}" text-anchor="middle" 
-                    fill="#f5f5f7" font-size="13" font-weight="500">${cat.label}</text>
+                    fill="#f5f5f7" font-size="16" font-weight="500" class="radar-label-text">${cat.label}</text>
             </g>
         `;
     });
@@ -745,7 +1209,7 @@ function generateRadarChart(teams) {
     // Generate team polygons with actual team colors
     let teamPolygons = '';
     teams.forEach((team, index) => {
-        const teamColor = team.color;
+        const teamColor = team.displayColor || team.color;
         const fillColor = hexToRgba(teamColor, 0.12);
         const points = getTeamPoints(team);
         const path = createPath(points);
@@ -783,17 +1247,17 @@ function generateRadarChart(teams) {
         
         logoElements += `
             <g class="team-logo-marker" data-team="${team.id}">
-                <circle cx="${logoX}" cy="${logoY}" r="24" fill="rgba(20, 20, 20, 0.9)" 
-                    stroke="${team.color}" stroke-width="2.5" />
+                <circle cx="${logoX}" cy="${logoY}" r="42" fill="rgba(20, 20, 20, 0.9)" 
+                    stroke="rgba(60, 60, 60, 0.5)" stroke-width="0" />
                 <image href="${team.logo}" x="${logoX - 18}" y="${logoY - 18}" 
-                    width="36" height="36" 
+                    width="48" height="48" 
                     onerror="this.href.baseVal='${team.logoFallback}'" />
             </g>
         `;
     });
     
     return `
-        <svg viewBox="0 0 ${size} ${size}" class="radar-chart" style="max-width: 800px; margin: 0 auto;">
+        <svg viewBox="0 0 ${size} ${size}" class="radar-chart">
             <defs>
                 <filter id="glow">
                     <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
@@ -812,6 +1276,15 @@ function generateRadarChart(teams) {
     `;
 }
 
+// Find team by ID across all leagues
+function findTeamById(teamId) {
+    for (const league in allLeagues) {
+        const team = allLeagues[league].find(t => t.id === teamId);
+        if (team) return team;
+    }
+    return null;
+}
+
 // Render goals statistics with radar chart
 function renderGoalsStats() {
     const container = document.getElementById('goalsStats');
@@ -821,22 +1294,29 @@ function renderGoalsStats() {
         return;
     }
 
-    const teams = selectedTeams.map(id => bundesligaTeams.find(t => t.id === id));
+    const teamsData = selectedTeams.map(id => findTeamById(id)).filter(t => t !== null);
+    const teams = assignTeamColors(teamsData); // Apply color conflict detection
     const radarChart = generateRadarChart(teams);
     
     const legend = teams.map((team, index) => {
         return `
             <div class="legend-item">
-                <div class="legend-color" style="background: ${team.color};"></div>
+                <div class="legend-color" style="background: ${team.displayColor || team.color};"></div>
                 <img src="${team.logo}" alt="${team.name}" class="legend-logo" onerror="this.onerror=null; this.src='${team.logoFallback}';">
                 <span class="legend-name">${team.shortName}</span>
             </div>
         `;
     }).join('');
 
+    const dataSources = `
+        <a href="https://fbref.com/en/comps/20/Bundesliga-Stats" target="_blank">Bundesliga</a> • 
+        <a href="https://fbref.com/en/comps/183/Frauen-Bundesliga-Stats" target="_blank">Frauen-Bundesliga</a> • 
+        <a href="https://fbref.com/en/comps/33/2-Bundesliga-Stats" target="_blank">2. Bundesliga</a>
+    `;
+
     container.innerHTML = `
         <h2>Team Performance Comparison</h2>
-        <p class="data-source">Data source: <a href="https://fbref.com/en/comps/20/Bundesliga-Stats" target="_blank">FBRef Bundesliga Stats</a></p>
+        <p class="data-source">Data sources: ${dataSources}</p>
         <div class="radar-container">
             ${radarChart}
             <div class="radar-legend">
@@ -860,38 +1340,40 @@ function renderGoalsStats() {
                 let tooltipHTML = `<div class="tooltip-stat">${statLabel}</div>`;
                 teams.forEach((team, index) => {
                     const value = team.stats[statKey];
-                    tooltipHTML += `
-                        <div class="tooltip-team">
-                            <span class="tooltip-team-name" style="color: ${team.color}">${team.shortName}</span>
-                            <span class="tooltip-value">${value}</span>
-                        </div>
-                    `;
+                tooltipHTML += `
+                    <div class="tooltip-team">
+                        <span class="tooltip-team-name" style="color: ${team.displayColor || team.color}">${team.shortName}</span>
+                        <span class="tooltip-value">${value}</span>
+                    </div>
+                `;
                 });
                 
                 tooltip.innerHTML = tooltipHTML;
                 
-                // Position tooltip intelligently within viewport
+                // Position tooltip directly attached to mouse pointer, positioned higher
                 const positionTooltip = (mouseX, mouseY) => {
+                    document.body.appendChild(tooltip);
                     const tooltipRect = tooltip.getBoundingClientRect();
                     const viewportWidth = window.innerWidth;
                     const viewportHeight = window.innerHeight;
                     
+                    // Position tooltip above and to the right of cursor by default
                     let left = mouseX + 15;
-                    let top = mouseY - 20;
+                    let top = mouseY - tooltipRect.height - 15;
                     
                     // Check if tooltip goes beyond right edge
                     if (left + tooltipRect.width > viewportWidth - 10) {
                         left = mouseX - tooltipRect.width - 15;
                     }
                     
-                    // Check if tooltip goes beyond bottom edge
-                    if (top + tooltipRect.height > viewportHeight - 10) {
-                        top = viewportHeight - tooltipRect.height - 10;
+                    // Check if tooltip goes beyond top edge, position below cursor instead
+                    if (top < 10) {
+                        top = mouseY + 15;
                     }
                     
-                    // Check if tooltip goes beyond top edge
-                    if (top < 10) {
-                        top = 10;
+                    // Check if tooltip goes beyond bottom edge even when below
+                    if (top + tooltipRect.height > viewportHeight - 10) {
+                        top = viewportHeight - tooltipRect.height - 10;
                     }
                     
                     // Check if tooltip goes beyond left edge
@@ -903,7 +1385,6 @@ function renderGoalsStats() {
                     tooltip.style.top = top + 'px';
                 };
                 
-                document.body.appendChild(tooltip);
                 positionTooltip(e.pageX, e.pageY);
             });
             
@@ -920,19 +1401,20 @@ function renderGoalsStats() {
                         const viewportWidth = window.innerWidth;
                         const viewportHeight = window.innerHeight;
                         
+                        // Position tooltip above cursor by default for better visibility
                         let left = mouseX + 15;
-                        let top = mouseY - 20;
+                        let top = mouseY - tooltipRect.height - 15;
                         
                         if (left + tooltipRect.width > viewportWidth - 10) {
                             left = mouseX - tooltipRect.width - 15;
                         }
                         
-                        if (top + tooltipRect.height > viewportHeight - 10) {
-                            top = viewportHeight - tooltipRect.height - 10;
+                        if (top < 10) {
+                            top = mouseY + 15;
                         }
                         
-                        if (top < 10) {
-                            top = 10;
+                        if (top + tooltipRect.height > viewportHeight - 10) {
+                            top = viewportHeight - tooltipRect.height - 10;
                         }
                         
                         if (left < 10) {
@@ -961,7 +1443,7 @@ function renderGoalsList() {
         return;
     }
 
-    const teams = selectedTeams.map(id => bundesligaTeams.find(t => t.id === id));
+    const teams = selectedTeams.map(id => findTeamById(id)).filter(t => t !== null);
     
     container.innerHTML = `
         <h2>Goals Comparison Table</h2>
@@ -978,16 +1460,16 @@ function renderGoalsList() {
             <tbody>
                 ${teams.sort((a, b) => b.goals - a.goals).map((team, index) => `
                     <tr>
-                        <td>
+                        <td data-label="Team">
                             <div class="team-cell">
                                 <img src="${team.logo}" alt="${team.name}" class="team-logo-small" onerror="this.onerror=null; this.src='${team.logoFallback}';">
                                 <span>${team.name}</span>
                             </div>
                         </td>
-                        <td class="top-scorer">${team.topScorer}</td>
-                        <td><strong>${team.goals}</strong></td>
-                        <td>${(team.goals / 10).toFixed(2)}</td>
-                        <td>#${index + 1}</td>
+                        <td data-label="Top Scorer" class="top-scorer">${team.topScorer}</td>
+                        <td data-label="Total Goals"><strong>${team.goals}</strong></td>
+                        <td data-label="Goals/Match">${(team.goals / 10).toFixed(2)}</td>
+                        <td data-label="Rank">#${index + 1}</td>
                     </tr>
                 `).join('')}
             </tbody>
@@ -995,13 +1477,12 @@ function renderGoalsList() {
     `;
 }
 
-// Make removeTeam globally accessible
-window.removeTeam = removeTeam;
-
 // Note about data fetching
 console.log('%c⚽ Bundesliga Team Analytics', 'font-size: 20px; font-weight: bold; color: #667eea;');
-console.log('%cData source: FBRef (https://fbref.com/en/comps/20/Bundesliga-Stats)', 'font-size: 12px; color: #667eea;');
-console.log('%cNote: This demo uses structured sample data representing Bundesliga team statistics.', 'font-size: 12px; color: #666;');
-console.log('%cIn production, data would be fetched from FBRef API or scraped with a backend proxy.', 'font-size: 12px; color: #666;');
-console.log('%cDue to CORS restrictions, direct browser requests to FBRef are not possible.', 'font-size: 12px; color: #666;');
+console.log('%cData sources: FBRef', 'font-size: 12px; color: #667eea;');
+console.log('%c  • Bundesliga (Men): https://fbref.com/en/comps/20/Bundesliga-Stats', 'font-size: 12px; color: #667eea;');
+console.log('%c  • Frauen-Bundesliga: https://fbref.com/en/comps/183/Frauen-Bundesliga-Stats', 'font-size: 12px; color: #667eea;');
+console.log('%c  • 2. Bundesliga: https://fbref.com/en/comps/33/2-Bundesliga-Stats', 'font-size: 12px; color: #667eea;');
+console.log('%cNote: This demo uses structured sample data representing team statistics from multiple leagues.', 'font-size: 12px; color: #666;');
+console.log('%cTeams from different leagues can be compared side-by-side.', 'font-size: 12px; color: #666;');
 

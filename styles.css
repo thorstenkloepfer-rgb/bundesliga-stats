@@ -118,14 +118,14 @@ header h1 .emoji {
     gap: 12px;
     padding: 12px 14px;
     background: transparent;
-    border-radius: 10px;
+    border-radius: 100px;
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid transparent;
 }
 
 .team-item:hover {
-    background: rgba(40, 40, 40, 0.4);
+    background: rgba(68, 68, 68, 0.4);
     transform: translateY(-1px);
 }
 
@@ -192,7 +192,7 @@ header h1 .emoji {
 .team-chip {
     display: flex;
     align-items: center;
-    background: rgba(60, 60, 60, 0.3);
+    background: rgba(60, 60, 60, 0.6);
     color: #f5f5f7;
     padding: 10px 16px;
     border-radius: 10px;
@@ -221,11 +221,11 @@ header h1 .emoji {
 }
 
 .btn-secondary {
-    background: transparent;
-    border: 1px solid #6b7280;
+    background: rgba(40, 40, 40, 0.8);
+    border: none;
     color: #d1d5db;
     padding: 10px 20px;
-    border-radius: 8px;
+    border-radius: 100px;
     cursor: pointer;
     font-size: 0.85rem;
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
@@ -234,21 +234,46 @@ header h1 .emoji {
 }
 
 .btn-secondary:hover {
-    background: rgba(60, 60, 60, 0.3);
-    border-color: #9ca3af;
+    background: rgba(60, 60, 60, 0.9);
     color: #f5f5f7;
+}
+
+/* League Dropdown */
+.league-dropdown {
+    background: rgba(40, 40, 40, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #d1d5db;
+    padding: 10px 16px;
+    border-radius: 100px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+    font-weight: 500;
+    transition: all 0.2s;
+    outline: none;
+}
+
+.league-dropdown:hover {
+    background: rgba(60, 60, 60, 0.9);
+    border-color: #6b7280;
+}
+
+.league-dropdown:focus {
+    background: rgba(60, 60, 60, 0.95);
+    border-color: #6b7280;
+    box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.2);
 }
 
 /* Goals Stats */
 .goals-stats {
-    padding: 32px 0;
+    padding: 20px 0;
     border-bottom: 1px solid rgba(60, 60, 60, 0.5);
 }
 
 .goals-stats h2 {
     color: #d1d5db;
-    margin-bottom: 10px;
-    font-size: 1.5rem;
+    margin-bottom: 8px;
+    font-size: 1.3rem;
     font-weight: 600;
     text-align: center;
     letter-spacing: -0.02em;
@@ -256,9 +281,9 @@ header h1 .emoji {
 
 .data-source {
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: #71717a;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     font-weight: 400;
 }
 
@@ -278,14 +303,14 @@ header h1 .emoji {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
-    padding: 20px;
+    gap: 15px;
+    padding: 10px;
 }
 
 .radar-chart {
     display: block;
     width: 100%;
-    max-width: 800px;
+    max-width: 1200px;
     height: auto;
     filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.4));
     animation: fadeInScale 0.6s ease-out;
@@ -326,30 +351,14 @@ header h1 .emoji {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
 }
 
-.team-logo-marker {
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.team-logo-marker:hover {
-    transform: scale(1.1);
-}
-
-.team-logo-marker circle {
-    transition: all 0.2s;
-}
-
-.team-logo-marker:hover circle {
-    stroke-width: 3;
-}
-
 /* Radar Legend */
 .radar-legend {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
     justify-content: center;
     align-items: center;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 
 .legend-item {
@@ -383,7 +392,7 @@ header h1 .emoji {
 
 .legend-name {
     color: #f5f5f7;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 0.9rem;
 }
 
@@ -585,13 +594,25 @@ header h1 .emoji {
     }
 
     .radar-chart {
-        max-width: 600px;
+        max-width: 700px;
     }
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
     header h1 {
         font-size: 2rem;
+    }
+
+    header h1 .emoji {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
     }
 
     .stats-grid {
@@ -601,31 +622,178 @@ header h1 .emoji {
     .team-list {
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     }
+    
+    .league-dropdown {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+    
+    .btn-secondary {
+        font-size: 0.8rem;
+        padding: 8px 16px;
+    }
 
     .radar-chart {
         max-width: 100%;
+        width: 100%;
+        margin: 0 -15px;
+        padding: 0 15px;
     }
     
     .radar-container {
-        padding: 10px;
+        padding: 0;
+        gap: 10px;
+        width: 100%;
+        margin: 0;
+    }
+    
+    .goals-stats {
+        margin: 0 -15px;
+        padding: 15px 15px;
+    }
+    
+    /* Optimize radar chart labels for mobile */
+    .radar-chart text {
+        font-size: 12px !important;
+    }
+    
+    .radar-label text {
+        font-size: 12px !important;
+    }
+    
+    .goals-stats h2 {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+    }
+    
+    .data-source {
+        margin-bottom: 10px;
+    }
+    
+    .radar-legend {
+        gap: 8px;
+        padding: 8px 0;
+    }
+    
+    .legend-item {
+        padding: 6px 10px;
+    }
+    
+    .legend-name {
+        font-size: 0.95rem !important;
+    }
+
+    /* Make goals table mobile-friendly */
+    .goals-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .goals-table thead,
+    .goals-table tbody,
+    .goals-table tr,
+    .goals-table th,
+    .goals-table td {
+        display: block;
+    }
+
+    .goals-table thead {
+        display: none;
+    }
+
+    .goals-table tr {
+        margin-bottom: 20px;
+        background: rgba(30, 30, 30, 0.4);
+        border-radius: 12px;
+        padding: 16px;
+        border-bottom: none;
+    }
+
+    .goals-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        text-align: right;
+    }
+
+    .goals-table td:last-child {
+        border-bottom: none;
+    }
+
+    .goals-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #9ca3af;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 0.02em;
+        text-align: left;
+        flex: 0 0 120px;
+    }
+
+    .goals-table .team-cell {
+        justify-content: flex-end;
+        flex: 1;
+    }
+
+    /* Ensure minimum font sizes */
+    body {
+        font-size: 14px;
+    }
+
+    .team-name {
+        font-size: 13px;
+    }
+
+    .team-goals {
+        font-size: 12px;
+    }
+
+    .search-box input {
+        font-size: 14px;
+    }
+
+    .btn-secondary {
+        font-size: 12px;
+        padding: 8px 18px;
+    }
+
+    .goals-table td,
+    .goals-table th {
+        font-size: 13px;
+    }
+
+    .data-source {
+        font-size: 12px;
+    }
+
+    .radar-tooltip {
+        font-size: 12px;
+        min-width: 160px;
+    }
+
+    .radar-tooltip .tooltip-stat {
+        font-size: 12px;
+    }
+
+    .radar-tooltip .tooltip-team {
+        font-size: 13px;
+    }
+
+    .legend-name {
+        font-size: 13px;
+    }
+
+    .stat-card h3 {
+        font-size: 13px;
+    }
+
+    .stat-card .stat-label {
+        font-size: 12px;
     }
 }
 
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: rgba(15, 15, 15, 0.5);
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgba(107, 114, 128, 0.3);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(107, 114, 128, 0.5);
-}
 

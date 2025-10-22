@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Bundesliga Team Analytics">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bundesliga Team Analytics - Performance Comparison</title>
@@ -16,10 +20,20 @@
         <div class="main-content">
             <!-- Team Selector -->
             <section class="team-selector-section">
-                <h2>Select Teams</h2>
-                <div class="search-box">
-                    <input type="text" id="teamSearch" placeholder="Search teams...">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+                    <h2 style="margin-bottom: 0;">Select Teams</h2>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <select id="leagueSelector" class="league-dropdown">
+                            <option value="bundesliga">Bundesliga (Men)</option>
+                            <option value="bundesliga2">2. Bundesliga (Men)</option>
+                            <option value="frauen">Frauen-Bundesliga (Women)</option>
+                        </select>
+                        <button id="clearSelection" class="btn-secondary">Clear Selection</button>
+                    </div>
                 </div>
+                <!--div class="search-box">
+                    <input type="text" id="teamSearch" placeholder="Search teams...">
+                </div>-->
                 <div id="teamList" class="team-list">
                     <div class="loading">Loading teams...</div>
                 </div>
@@ -30,15 +44,6 @@
                 <!-- Goals Statistics -->
                 <div class="goals-stats" id="goalsStats">
                     <!-- Stats will be populated here -->
-                </div>
-
-                <!-- Selected Teams Display -->
-                <div class="selected-teams">
-                    <h2>Selected Teams for Comparison</h2>
-                    <div id="selectedTeams" class="teams-chips">
-                        <p class="empty-state">Select teams from above to start comparing</p>
-                    </div>
-                    <button id="clearSelection" class="btn-secondary">Clear Selection</button>
                 </div>
 
                 <!-- Goals List -->

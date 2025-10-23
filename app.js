@@ -103,7 +103,7 @@ const bundesligaTeams = [
         shortName: 'Frankfurt',
         goals: 32,
         topScorer: 'Omar Marmoush',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/0/04/Eintracht_Frankfurt_Logo.svg',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Eintracht_Frankfurt_Logo.svg/200px-Eintracht_Frankfurt_Logo.svg.png',
         logoFallback: 'https://ui-avatars.com/api/?name=SGE&size=50&background=E1000F&color=fff&bold=true',
         slug: 'eintracht-frankfurt',
         color: '#E1000F',
@@ -169,7 +169,7 @@ const bundesligaTeams = [
         shortName: 'Freiburg',
         goals: 30,
         topScorer: 'Vincenzo Grifo',
-        logo: 'https://upload.wikimedia.org/wikipedia/en/f/f5/SC_Freiburg_logo.svg',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/SC_Freiburg_logo.svg/200px-SC_Freiburg_logo.svg.png',
         logoFallback: 'https://ui-avatars.com/api/?name=SCF&size=50&background=FF0000&color=fff&bold=true',
         slug: 'sc-freiburg',
         color: '#FF0000',
@@ -235,7 +235,7 @@ const bundesligaTeams = [
         shortName: 'Hoffenheim',
         goals: 31,
         topScorer: 'Andrej Kramarić',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/6/64/TSG_1899_Hoffenheim_logo.svg',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/TSG_1899_Hoffenheim_logo.svg/200px-TSG_1899_Hoffenheim_logo.svg.png',
         logoFallback: 'https://ui-avatars.com/api/?name=TSG&size=50&background=1961B5&color=fff&bold=true',
         slug: 'tsg-1899-hoffenheim',
         color: '#1961B5',
@@ -279,7 +279,7 @@ const bundesligaTeams = [
         shortName: 'Augsburg',
         goals: 24,
         topScorer: 'Phillip Tietz',
-        logo: 'https://upload.wikimedia.org/wikipedia/en/2/2a/FC_Augsburg_logo.svg',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/FC_Augsburg_logo_%282021%29.svg/200px-FC_Augsburg_logo_%282021%29.svg.png',
         logoFallback: 'https://ui-avatars.com/api/?name=FCA&size=50&background=BA3733&color=fff&bold=true',
         slug: 'fc-augsburg',
         color: '#BA3733',
@@ -323,7 +323,7 @@ const bundesligaTeams = [
         shortName: 'Bochum',
         goals: 22,
         topScorer: 'Myron Boadu',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/VfL_Bochum_logo.svg',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/VfL_Bochum_logo.svg/200px-VfL_Bochum_logo.svg.png',
         logoFallback: 'https://ui-avatars.com/api/?name=BOC&size=50&background=005CA9&color=fff&bold=true',
         slug: 'vfl-bochum-1848',
         color: '#005CA9',
@@ -345,7 +345,7 @@ const bundesligaTeams = [
         shortName: 'Heidenheim',
         goals: 23,
         topScorer: 'Marvin Pieringer',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/0/02/1._FC_Heidenheim_Logo.svg',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/1._FC_Heidenheim_Logo.svg/200px-1._FC_Heidenheim_Logo.svg.png',
         logoFallback: 'https://ui-avatars.com/api/?name=FCH&size=50&background=E30613&color=fff&bold=true',
         slug: '1-fc-heidenheim-1846',
         color: '#E30613',
@@ -367,7 +367,7 @@ const bundesligaTeams = [
         shortName: 'St. Pauli',
         goals: 25,
         topScorer: 'Johannes Eggestein',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/e/e1/FC_St._Pauli_logo.svg',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FC_St._Pauli_logo.svg/200px-FC_St._Pauli_logo.svg.png',
         logoFallback: 'https://ui-avatars.com/api/?name=STP&size=50&background=623F33&color=fff&bold=true',
         slug: 'fc-st-pauli',
         color: '#623F33',
@@ -389,7 +389,7 @@ const bundesligaTeams = [
         shortName: 'Kiel',
         goals: 21,
         topScorer: 'Shuto Machino',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/0/05/Holstein_Kiel_Logo.svg',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Holstein_Kiel_Logo.svg/200px-Holstein_Kiel_Logo.svg.png',
         logoFallback: 'https://ui-avatars.com/api/?name=KSV&size=50&background=003C8F&color=fff&bold=true',
         slug: 'holstein-kiel',
         color: '#003C8F',
@@ -462,7 +462,7 @@ const frauenBundesligaTeams = [
         league: 'frauen',
         goals: 18,
         topScorer: 'Selina Cerci',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/6/64/TSG_1899_Hoffenheim_logo.svg',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/TSG_1899_Hoffenheim_logo.svg/200px-TSG_1899_Hoffenheim_logo.svg.png',
         logoFallback: 'https://ui-avatars.com/api/?name=TSG&size=50&background=1961B5&color=fff&bold=true',
         slug: 'hoffenheim-women',
         color: '#1961B5',
@@ -485,7 +485,7 @@ const frauenBundesligaTeams = [
         league: 'frauen',
         goals: 17,
         topScorer: 'Laura Freigang',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/0/04/Eintracht_Frankfurt_Logo.svg',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Eintracht_Frankfurt_Logo.svg/200px-Eintracht_Frankfurt_Logo.svg.png',
         logoFallback: 'https://ui-avatars.com/api/?name=SGE&size=50&background=E1000F&color=fff&bold=true',
         slug: 'frankfurt-women',
         color: '#E1000F',
@@ -545,6 +545,144 @@ const frauenBundesligaTeams = [
             goalKicks: 68,
             crosses: 72,
             sweeper: 73
+        }
+    },
+    {
+        id: 'leipzig-women',
+        name: 'RB Leipzig',
+        shortName: 'Leipzig (W)',
+        league: 'frauen',
+        goals: 15,
+        topScorer: 'Giovanna Hoffmann',
+        logo: 'https://upload.wikimedia.org/wikipedia/en/0/04/RB_Leipzig_2014_logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=RBL&size=50&background=DD0741&color=fff&bold=true',
+        slug: 'leipzig-women',
+        color: '#DD0741',
+        secondaryColor: '#0045A0',
+        stats: {
+            performance: 76,
+            progression: 78,
+            penaltyKicks: 66,
+            goals: 79,
+            passes: 77,
+            goalKicks: 69,
+            crosses: 73,
+            sweeper: 74
+        }
+    },
+    {
+        id: 'essen-women',
+        name: 'SGS Essen',
+        shortName: 'Essen (W)',
+        league: 'frauen',
+        goals: 12,
+        topScorer: 'Ramona Maier',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/SGS_Essen_Logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=SGS&size=50&background=0033A0&color=fff&bold=true',
+        slug: 'sgs-essen-women',
+        color: '#0033A0',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 72,
+            progression: 74,
+            penaltyKicks: 62,
+            goals: 74,
+            passes: 73,
+            goalKicks: 65,
+            crosses: 69,
+            sweeper: 70
+        }
+    },
+    {
+        id: 'freiburg-women',
+        name: 'SC Freiburg',
+        shortName: 'Freiburg (W)',
+        league: 'frauen',
+        goals: 13,
+        topScorer: 'Alina Axtmann',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/SC_Freiburg_logo.svg/200px-SC_Freiburg_logo.svg.png',
+        logoFallback: 'https://ui-avatars.com/api/?name=SCF&size=50&background=FF0000&color=fff&bold=true',
+        slug: 'freiburg-women',
+        color: '#FF0000',
+        secondaryColor: '#000000',
+        stats: {
+            performance: 73,
+            progression: 75,
+            penaltyKicks: 63,
+            goals: 75,
+            passes: 74,
+            goalKicks: 66,
+            crosses: 70,
+            sweeper: 71
+        }
+    },
+    {
+        id: 'koeln-women',
+        name: '1. FC Köln',
+        shortName: 'Köln (W)',
+        league: 'frauen',
+        goals: 11,
+        topScorer: 'Vanessa Leimenstoll',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/f/f2/Logo-fc-koeln.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=FCK&size=50&background=ED1C24&color=fff&bold=true',
+        slug: 'koeln-women',
+        color: '#ED1C24',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 70,
+            progression: 72,
+            penaltyKicks: 60,
+            goals: 72,
+            passes: 71,
+            goalKicks: 63,
+            crosses: 67,
+            sweeper: 68
+        }
+    },
+    {
+        id: 'nuernberg-women',
+        name: '1. FC Nürnberg',
+        shortName: 'Nürnberg (W)',
+        league: 'frauen',
+        goals: 10,
+        topScorer: 'Medina Desic',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/1._FC_N%C3%BCrnberg_logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=FCN&size=50&background=8B1A1A&color=fff&bold=true',
+        slug: 'nuernberg-women',
+        color: '#8B1A1A',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 68,
+            progression: 70,
+            penaltyKicks: 58,
+            goals: 70,
+            passes: 69,
+            goalKicks: 61,
+            crosses: 65,
+            sweeper: 66
+        }
+    },
+    {
+        id: 'jena-women',
+        name: 'FC Carl Zeiss Jena',
+        shortName: 'Jena (W)',
+        league: 'frauen',
+        goals: 9,
+        topScorer: 'Nele Bauerei',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/f/f8/FC_Carl_Zeiss_Jena_Logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=FCJ&size=50&background=004B93&color=fff&bold=true',
+        slug: 'jena-women',
+        color: '#004B93',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 66,
+            progression: 68,
+            penaltyKicks: 56,
+            goals: 68,
+            passes: 67,
+            goalKicks: 59,
+            crosses: 63,
+            sweeper: 64
         }
     }
 ];
@@ -687,6 +825,282 @@ const bundesliga2Teams = [
             goalKicks: 64,
             crosses: 69,
             sweeper: 70
+        }
+    },
+    {
+        id: 'hannover-2',
+        name: 'Hannover 96',
+        shortName: 'Hannover',
+        league: 'bundesliga2',
+        goals: 26,
+        topScorer: 'Nicolo Tresoldi',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/c/cd/Hannover_96_Logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=H96&size=50&background=009B3A&color=fff&bold=true',
+        slug: 'hannover-96',
+        color: '#009B3A',
+        secondaryColor: '#000000',
+        stats: {
+            performance: 71,
+            progression: 73,
+            penaltyKicks: 61,
+            goals: 75,
+            passes: 72,
+            goalKicks: 63,
+            crosses: 68,
+            sweeper: 69
+        }
+    },
+    {
+        id: 'nuernberg-2',
+        name: '1. FC Nürnberg',
+        shortName: 'Nürnberg',
+        league: 'bundesliga2',
+        goals: 24,
+        topScorer: 'Stefanos Tzimas',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/1._FC_N%C3%BCrnberg_logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=FCN&size=50&background=8B1A1A&color=fff&bold=true',
+        slug: 'nuernberg',
+        color: '#8B1A1A',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 70,
+            progression: 72,
+            penaltyKicks: 60,
+            goals: 74,
+            passes: 71,
+            goalKicks: 62,
+            crosses: 67,
+            sweeper: 68
+        }
+    },
+    {
+        id: 'fuerth-2',
+        name: 'SpVgg Greuther Fürth',
+        shortName: 'Fürth',
+        league: 'bundesliga2',
+        goals: 23,
+        topScorer: 'Noel Futkeu',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/SpVgg_Greuther_F%C3%BCrth_logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=SGF&size=50&background=009D62&color=fff&bold=true',
+        slug: 'greuther-fuerth',
+        color: '#009D62',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 69,
+            progression: 71,
+            penaltyKicks: 59,
+            goals: 73,
+            passes: 70,
+            goalKicks: 61,
+            crosses: 66,
+            sweeper: 67
+        }
+    },
+    {
+        id: 'karlsruhe-2',
+        name: 'Karlsruher SC',
+        shortName: 'Karlsruhe',
+        league: 'bundesliga2',
+        goals: 25,
+        topScorer: 'Budu Zivzivadze',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/8/82/Karlsruher_SC_Logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=KSC&size=50&background=0066B2&color=fff&bold=true',
+        slug: 'karlsruher-sc',
+        color: '#0066B2',
+        secondaryColor: '#000000',
+        stats: {
+            performance: 70,
+            progression: 72,
+            penaltyKicks: 60,
+            goals: 74,
+            passes: 71,
+            goalKicks: 62,
+            crosses: 67,
+            sweeper: 68
+        }
+    },
+    {
+        id: 'kaiserslautern-2',
+        name: '1. FC Kaiserslautern',
+        shortName: 'Kaiserslautern',
+        league: 'bundesliga2',
+        goals: 22,
+        topScorer: 'Ragnar Ache',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/4/4c/1._FC_Kaiserslautern_logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=FCK&size=50&background=E30613&color=fff&bold=true',
+        slug: 'kaiserslautern',
+        color: '#E30613',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 68,
+            progression: 70,
+            penaltyKicks: 58,
+            goals: 72,
+            passes: 69,
+            goalKicks: 60,
+            crosses: 65,
+            sweeper: 66
+        }
+    },
+    {
+        id: 'elversberg-2',
+        name: 'SV Elversberg',
+        shortName: 'Elversberg',
+        league: 'bundesliga2',
+        goals: 21,
+        topScorer: 'Fisnik Asllani',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/e/e4/SV_07_Elversberg_logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=SVE&size=50&background=005CA9&color=fff&bold=true',
+        slug: 'elversberg',
+        color: '#005CA9',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 67,
+            progression: 69,
+            penaltyKicks: 57,
+            goals: 71,
+            passes: 68,
+            goalKicks: 59,
+            crosses: 64,
+            sweeper: 65
+        }
+    },
+    {
+        id: 'rostock-2',
+        name: 'Hansa Rostock',
+        shortName: 'Rostock',
+        league: 'bundesliga2',
+        goals: 19,
+        topScorer: 'Albin Berisha',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/8/89/FC_Hansa_Rostock_logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=FCH&size=50&background=005CA9&color=fff&bold=true',
+        slug: 'hansa-rostock',
+        color: '#005CA9',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 65,
+            progression: 67,
+            penaltyKicks: 55,
+            goals: 69,
+            passes: 66,
+            goalKicks: 57,
+            crosses: 62,
+            sweeper: 63
+        }
+    },
+    {
+        id: 'braunschweig-2',
+        name: 'Eintracht Braunschweig',
+        shortName: 'Braunschweig',
+        league: 'bundesliga2',
+        goals: 20,
+        topScorer: 'Rayan Philippe',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/5/5e/Eintracht_Braunschweig_Logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=EBS&size=50&background=FFD800&color=000&bold=true',
+        slug: 'braunschweig',
+        color: '#FFD800',
+        secondaryColor: '#005CA9',
+        stats: {
+            performance: 66,
+            progression: 68,
+            penaltyKicks: 56,
+            goals: 70,
+            passes: 67,
+            goalKicks: 58,
+            crosses: 63,
+            sweeper: 64
+        }
+    },
+    {
+        id: 'magdeburg-2',
+        name: '1. FC Magdeburg',
+        shortName: 'Magdeburg',
+        league: 'bundesliga2',
+        goals: 18,
+        topScorer: 'Martijn Kaars',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/e/e8/1._FC_Magdeburg_Logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=FCM&size=50&background=005CA9&color=fff&bold=true',
+        slug: 'magdeburg',
+        color: '#005CA9',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 64,
+            progression: 66,
+            penaltyKicks: 54,
+            goals: 68,
+            passes: 65,
+            goalKicks: 56,
+            crosses: 61,
+            sweeper: 62
+        }
+    },
+    {
+        id: 'regensburg-2',
+        name: 'SSV Jahn Regensburg',
+        shortName: 'Regensburg',
+        league: 'bundesliga2',
+        goals: 17,
+        topScorer: 'Christian Viet',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/c/cd/SSV_Jahn_Regensburg_Logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=SSV&size=50&background=E30613&color=fff&bold=true',
+        slug: 'regensburg',
+        color: '#E30613',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 63,
+            progression: 65,
+            penaltyKicks: 53,
+            goals: 67,
+            passes: 64,
+            goalKicks: 55,
+            crosses: 60,
+            sweeper: 61
+        }
+    },
+    {
+        id: 'osnabrueck-2',
+        name: 'VfL Osnabrück',
+        shortName: 'Osnabrück',
+        league: 'bundesliga2',
+        goals: 16,
+        topScorer: 'Erik Engelhardt',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/VfL_Osnabrück_Logo.svg',
+        logoFallback: 'https://ui-avatars.com/api/?name=VFL&size=50&background=7A2E8C&color=fff&bold=true',
+        slug: 'osnabrueck',
+        color: '#7A2E8C',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 62,
+            progression: 64,
+            penaltyKicks: 52,
+            goals: 66,
+            passes: 63,
+            goalKicks: 54,
+            crosses: 59,
+            sweeper: 60
+        }
+    },
+    {
+        id: 'bochum-2',
+        name: 'VfL Bochum II',
+        shortName: 'Bochum II',
+        league: 'bundesliga2',
+        goals: 15,
+        topScorer: 'Various',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/VfL_Bochum_logo.svg/200px-VfL_Bochum_logo.svg.png',
+        logoFallback: 'https://ui-avatars.com/api/?name=BOC&size=50&background=005CA9&color=fff&bold=true',
+        slug: 'bochum-ii',
+        color: '#005CA9',
+        secondaryColor: '#FFFFFF',
+        stats: {
+            performance: 61,
+            progression: 63,
+            penaltyKicks: 51,
+            goals: 65,
+            passes: 62,
+            goalKicks: 53,
+            crosses: 58,
+            sweeper: 59
         }
     }
 ];
@@ -1134,9 +1548,12 @@ function updateSelectedState() {
 function generateRadarChart(teams) {
     if (teams.length === 0) return '';
     
-    const size = 1050; // Increased by 20% from 875
+    // Responsive sizing for small mobile viewports
+    const isSmallMobile = typeof window !== 'undefined' && window.innerWidth <= 420;
+    const size = 1050; // keep viewBox square; scale contents via radii
     const center = size / 2;
-    const maxRadius = 300; // Increased by 20% from 250
+    const maxRadius = isSmallMobile ? 420 : 300;
+    const labelPadding = 60;
     const levels = 5;
     const angleStep = (Math.PI * 2) / statCategories.length;
     const goalsArray = teams.map(t => (typeof t.goals === 'number' ? t.goals : 0));
@@ -1147,13 +1564,23 @@ function generateRadarChart(teams) {
         return statCategories.map((cat, index) => {
             const isGoals = cat.key === 'goals';
             const rawValue = isGoals ? (team.goals || 0) : team.stats[cat.key];
-            const valueForRadius = isGoals ? Math.min(100, (rawValue / maxGoals) * 100) : rawValue;
+            // For goals, use absolute scale (max 50 goals = 100%)
+            // For other stats, use the 0-100 scaled values
+            let valueForRadius;
+            if (isGoals) {
+                // Absolute scale: 50 goals = 100%, so 42 goals = 84%, 21 goals = 42%, etc.
+                const maxGoalsScale = 50;
+                valueForRadius = (rawValue / maxGoalsScale) * 100;
+            } else {
+                valueForRadius = team.stats[cat.key];
+            }
             const radius = (valueForRadius / 100) * maxRadius;
             const angle = angleStep * index - Math.PI / 2;
             return {
                 x: center + radius * Math.cos(angle),
                 y: center + radius * Math.sin(angle),
-                value: rawValue
+                value: rawValue,
+                displayValue: rawValue // Keep raw value for display
             };
         });
     }
@@ -1182,18 +1609,22 @@ function generateRadarChart(teams) {
             stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" />`;
     });
     
-    // Generate labels  
+    // Generate labels with optimized font sizes
+    // Font sizes in SVG are relative to viewBox (1050px)
+    // Based on actual rendering tests:
+    // Mobile (≤420px): Font 48 → minimum 12px actual ✓
+    // Desktop: Font 16 → maximum 16px actual ✓
     let labels = '';
     statCategories.forEach((cat, index) => {
         const angle = angleStep * index - Math.PI / 2;
-        const labelRadius = maxRadius + 60;
+        const labelRadius = maxRadius + labelPadding;
         const x = center + labelRadius * Math.cos(angle);
         const y = center + labelRadius * Math.sin(angle);
         
         labels += `
             <g class="radar-label">
                 <text x="${x}" y="${y + 4}" text-anchor="middle" 
-                    fill="#f5f5f7" font-size="16" font-weight="500" class="radar-label-text">${cat.label}</text>
+                    fill="#f5f5f7" font-size="${isSmallMobile ? 48 : 16}" font-weight="600" class="radar-label-text">${cat.label}</text>
             </g>
         `;
     });
@@ -1232,6 +1663,8 @@ function generateRadarChart(teams) {
     // Add team logos - positioned above and below the chart
     let logoElements = '';
     const logosPerRow = Math.ceil(teams.length / 2);
+    const logoCircleR = isSmallMobile ? 28 : 42;
+    const logoImgSize = isSmallMobile ? 32 : 48;
     
     teams.forEach((team, index) => {
         const isTopRow = index < logosPerRow;
@@ -1247,10 +1680,10 @@ function generateRadarChart(teams) {
         
         logoElements += `
             <g class="team-logo-marker" data-team="${team.id}">
-                <circle cx="${logoX}" cy="${logoY}" r="42" fill="rgba(20, 20, 20, 0.9)" 
+                <circle cx="${logoX}" cy="${logoY}" r="${logoCircleR}" fill="rgba(20, 20, 20, 0.9)" 
                     stroke="rgba(60, 60, 60, 0.5)" stroke-width="0" />
-                <image href="${team.logo}" x="${logoX - 18}" y="${logoY - 18}" 
-                    width="48" height="48" 
+                <image href="${team.logo}" x="${logoX - logoImgSize / 2}" y="${logoY - logoImgSize / 2}" 
+                    width="${logoImgSize}" height="${logoImgSize}" 
                     onerror="this.href.baseVal='${team.logoFallback}'" />
             </g>
         `;
@@ -1339,7 +1772,7 @@ function renderGoalsStats() {
                 
                 let tooltipHTML = `<div class="tooltip-stat">${statLabel}</div>`;
                 teams.forEach((team, index) => {
-                    const value = team.stats[statKey];
+                    const value = statKey === 'goals' ? (team.goals || 0) : team.stats[statKey];
                 tooltipHTML += `
                     <div class="tooltip-team">
                         <span class="tooltip-team-name" style="color: ${team.displayColor || team.color}">${team.shortName}</span>

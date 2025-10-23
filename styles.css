@@ -351,6 +351,10 @@ header h1 .emoji {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
 }
 
+.radar-label-text {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+}
+
 /* Radar Legend */
 .radar-legend {
     display: flex;
@@ -652,14 +656,7 @@ header h1 .emoji {
         padding: 15px 15px;
     }
     
-    /* Optimize radar chart labels for mobile */
-    .radar-chart text {
-        font-size: 12px !important;
-    }
-    
-    .radar-label text {
-        font-size: 12px !important;
-    }
+    /* Radar chart labels are now sized in SVG to scale properly with viewBox */
     
     .goals-stats h2 {
         font-size: 1.2rem;
@@ -793,6 +790,27 @@ header h1 .emoji {
 
     .stat-card .stat-label {
         font-size: 12px;
+    }
+}
+
+/* Very small mobile phones (e.g., 360-420 width) */
+@media (max-width: 420px) {
+    .radar-chart {
+        max-width: 100%;
+    }
+    /* Ensure minimum legible font size for radar labels */
+    .radar-label-text {
+        font-size: 12px !important;
+    }
+    .legend-name {
+        font-size: 13px !important;
+    }
+}
+
+/* Extra safety for viewports under 400px */
+@media (max-width: 400px) {
+    .radar-label-text {
+        font-size: 12px !important;
     }
 }
 

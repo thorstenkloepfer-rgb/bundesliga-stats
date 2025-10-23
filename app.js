@@ -103,8 +103,8 @@ const bundesligaTeams = [
         shortName: 'Frankfurt',
         goals: 32,
         topScorer: 'Omar Marmoush',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Eintracht_Frankfurt_Logo.svg/200px-Eintracht_Frankfurt_Logo.svg.png',
-        logoFallback: 'https://ui-avatars.com/api/?name=SGE&size=50&background=E1000F&color=fff&bold=true',
+        logo: 'assets/svgs/Eintracht_Frankfurt_crest.svg',
+        logoFallback: 'https://upload.wikimedia.org/wikipedia/commons/0/04/Eintracht_Frankfurt_Logo.svg',
         slug: 'eintracht-frankfurt',
         color: '#E1000F',
         secondaryColor: '#000000',
@@ -169,8 +169,8 @@ const bundesligaTeams = [
         shortName: 'Freiburg',
         goals: 30,
         topScorer: 'Vincenzo Grifo',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/SC_Freiburg_logo.svg/200px-SC_Freiburg_logo.svg.png',
-        logoFallback: 'https://ui-avatars.com/api/?name=SCF&size=50&background=FF0000&color=fff&bold=true',
+        logo: 'assets/svgs/Freiburger_FC_Logo.svg',
+        logoFallback: 'https://upload.wikimedia.org/wikipedia/commons/f/f1/SC_Freiburg_logo.svg',
         slug: 'sc-freiburg',
         color: '#FF0000',
         secondaryColor: '#000000',
@@ -235,8 +235,8 @@ const bundesligaTeams = [
         shortName: 'Hoffenheim',
         goals: 31,
         topScorer: 'Andrej Kramarić',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/TSG_1899_Hoffenheim_logo.svg/200px-TSG_1899_Hoffenheim_logo.svg.png',
-        logoFallback: 'https://ui-avatars.com/api/?name=TSG&size=50&background=1961B5&color=fff&bold=true',
+        logo: 'assets/svgs/Logo_TSG_Hoffenheim.svg',
+        logoFallback: 'https://upload.wikimedia.org/wikipedia/commons/6/64/TSG_1899_Hoffenheim_logo.svg',
         slug: 'tsg-1899-hoffenheim',
         color: '#1961B5',
         secondaryColor: '#FFFFFF',
@@ -279,8 +279,8 @@ const bundesligaTeams = [
         shortName: 'Augsburg',
         goals: 24,
         topScorer: 'Phillip Tietz',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/FC_Augsburg_logo_%282021%29.svg/200px-FC_Augsburg_logo_%282021%29.svg.png',
-        logoFallback: 'https://ui-avatars.com/api/?name=FCA&size=50&background=BA3733&color=fff&bold=true',
+        logo: 'assets/svgs/FC_Augsburg_logo.svg',
+        logoFallback: 'https://upload.wikimedia.org/wikipedia/commons/8/87/FC_Augsburg_logo_%282021%29.svg',
         slug: 'fc-augsburg',
         color: '#BA3733',
         secondaryColor: '#FFFFFF',
@@ -323,8 +323,8 @@ const bundesligaTeams = [
         shortName: 'Bochum',
         goals: 22,
         topScorer: 'Myron Boadu',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/VfL_Bochum_logo.svg/200px-VfL_Bochum_logo.svg.png',
-        logoFallback: 'https://ui-avatars.com/api/?name=BOC&size=50&background=005CA9&color=fff&bold=true',
+        logo: 'assets/svgs/VfL_Bochum_logo.svg',
+        logoFallback: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/VfL_Bochum_logo.svg',
         slug: 'vfl-bochum-1848',
         color: '#005CA9',
         secondaryColor: '#FFFFFF',
@@ -345,8 +345,8 @@ const bundesligaTeams = [
         shortName: 'Heidenheim',
         goals: 23,
         topScorer: 'Marvin Pieringer',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/1._FC_Heidenheim_Logo.svg/200px-1._FC_Heidenheim_Logo.svg.png',
-        logoFallback: 'https://ui-avatars.com/api/?name=FCH&size=50&background=E30613&color=fff&bold=true',
+        logo: 'assets/svgs/1._FC_Heidenheim_1846.svg',
+        logoFallback: 'https://upload.wikimedia.org/wikipedia/commons/0/02/1._FC_Heidenheim_Logo.svg',
         slug: '1-fc-heidenheim-1846',
         color: '#E30613',
         secondaryColor: '#004A9F',
@@ -367,8 +367,8 @@ const bundesligaTeams = [
         shortName: 'St. Pauli',
         goals: 25,
         topScorer: 'Johannes Eggestein',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FC_St._Pauli_logo.svg/200px-FC_St._Pauli_logo.svg.png',
-        logoFallback: 'https://ui-avatars.com/api/?name=STP&size=50&background=623F33&color=fff&bold=true',
+        logo: 'assets/svgs/FC_St._Pauli_logo_(2018).svg',
+        logoFallback: 'https://upload.wikimedia.org/wikipedia/commons/e/e1/FC_St._Pauli_logo.svg',
         slug: 'fc-st-pauli',
         color: '#623F33',
         secondaryColor: '#FFFFFF',
@@ -389,8 +389,8 @@ const bundesligaTeams = [
         shortName: 'Kiel',
         goals: 21,
         topScorer: 'Shuto Machino',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Holstein_Kiel_Logo.svg/200px-Holstein_Kiel_Logo.svg.png',
-        logoFallback: 'https://ui-avatars.com/api/?name=KSV&size=50&background=003C8F&color=fff&bold=true',
+        logo: 'assets/svgs/Holstein_Kiel_Logo.svg',
+        logoFallback: 'https://upload.wikimedia.org/wikipedia/commons/0/05/Holstein_Kiel_Logo.svg',
         slug: 'holstein-kiel',
         color: '#003C8F',
         secondaryColor: '#FFFFFF',
@@ -462,8 +462,8 @@ const frauenBundesligaTeams = [
         league: 'frauen',
         goals: 18,
         topScorer: 'Selina Cerci',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/TSG_1899_Hoffenheim_logo.svg/200px-TSG_1899_Hoffenheim_logo.svg.png',
-        logoFallback: 'https://ui-avatars.com/api/?name=TSG&size=50&background=1961B5&color=fff&bold=true',
+        logo: 'assets/svgs/Logo_TSG_Hoffenheim.svg',
+        logoFallback: 'https://upload.wikimedia.org/wikipedia/commons/6/64/TSG_1899_Hoffenheim_logo.svg',
         slug: 'hoffenheim-women',
         color: '#1961B5',
         secondaryColor: '#FFFFFF',
@@ -485,8 +485,8 @@ const frauenBundesligaTeams = [
         league: 'frauen',
         goals: 17,
         topScorer: 'Laura Freigang',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Eintracht_Frankfurt_Logo.svg/200px-Eintracht_Frankfurt_Logo.svg.png',
-        logoFallback: 'https://ui-avatars.com/api/?name=SGE&size=50&background=E1000F&color=fff&bold=true',
+        logo: 'assets/svgs/Eintracht_Frankfurt_crest.svg',
+        logoFallback: 'https://upload.wikimedia.org/wikipedia/commons/0/04/Eintracht_Frankfurt_Logo.svg',
         slug: 'frankfurt-women',
         color: '#E1000F',
         secondaryColor: '#000000',
@@ -600,8 +600,8 @@ const frauenBundesligaTeams = [
         league: 'frauen',
         goals: 13,
         topScorer: 'Alina Axtmann',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/SC_Freiburg_logo.svg/200px-SC_Freiburg_logo.svg.png',
-        logoFallback: 'https://ui-avatars.com/api/?name=SCF&size=50&background=FF0000&color=fff&bold=true',
+        logo: 'assets/svgs/Freiburger_FC_Logo.svg',
+        logoFallback: 'https://upload.wikimedia.org/wikipedia/commons/f/f1/SC_Freiburg_logo.svg',
         slug: 'freiburg-women',
         color: '#FF0000',
         secondaryColor: '#000000',
@@ -1087,8 +1087,8 @@ const bundesliga2Teams = [
         league: 'bundesliga2',
         goals: 15,
         topScorer: 'Various',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/VfL_Bochum_logo.svg/200px-VfL_Bochum_logo.svg.png',
-        logoFallback: 'https://ui-avatars.com/api/?name=BOC&size=50&background=005CA9&color=fff&bold=true',
+        logo: 'assets/svgs/VfL_Bochum_logo.svg',
+        logoFallback: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/VfL_Bochum_logo.svg',
         slug: 'bochum-ii',
         color: '#005CA9',
         secondaryColor: '#FFFFFF',
@@ -1637,22 +1637,48 @@ function generateRadarChart(teams) {
         return `rgba(${r}, ${g}, ${b}, ${alpha})`;
     }
     
+    // Helper function to calculate color luminance and adjust if too dark
+    function ensureVisibleColor(hexColor) {
+        const r = parseInt(hexColor.slice(1, 3), 16);
+        const g = parseInt(hexColor.slice(3, 5), 16);
+        const b = parseInt(hexColor.slice(5, 7), 16);
+        
+        // Calculate relative luminance (perceived brightness)
+        const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        
+        // If color is too dark (luminance < 0.25), use medium gray instead
+        // Otherwise, lighten dark colors slightly for better visibility on dark background
+        if (luminance < 0.25) {
+            return '#9CA3AF'; // Medium gray for very dark colors (black, dark brown, dark blue)
+        } else if (luminance < 0.4) {
+            // Lighten somewhat dark colors by 30%
+            const lighten = (val) => Math.min(255, Math.round(val + (255 - val) * 0.3));
+            const newR = lighten(r).toString(16).padStart(2, '0');
+            const newG = lighten(g).toString(16).padStart(2, '0');
+            const newB = lighten(b).toString(16).padStart(2, '0');
+            return `#${newR}${newG}${newB}`;
+        }
+        
+        return hexColor; // Color is bright enough, use as-is
+    }
+    
     // Generate team polygons with actual team colors
     let teamPolygons = '';
     teams.forEach((team, index) => {
         const teamColor = team.displayColor || team.color;
+        const visibleStrokeColor = ensureVisibleColor(teamColor);
         const fillColor = hexToRgba(teamColor, 0.12);
         const points = getTeamPoints(team);
         const path = createPath(points);
         
         teamPolygons += `
             <g class="team-polygon" data-team="${team.id}">
-                <path d="${path}" fill="${fillColor}" stroke="${teamColor}" 
+                <path d="${path}" fill="${fillColor}" stroke="${visibleStrokeColor}" 
                     stroke-width="2.5" stroke-linejoin="round" 
                     style="transition: all 0.3s ease;" />
                 ${points.map((p, i) => `
-                    <circle cx="${p.x}" cy="${p.y}" r="6" fill="${teamColor}" 
-                        stroke="rgba(0, 0, 0, 0.5)" stroke-width="2" 
+                    <circle cx="${p.x}" cy="${p.y}" r="6" fill="${visibleStrokeColor}" 
+                        stroke="rgba(60, 60, 60, 0.6)" stroke-width="2" 
                         class="radar-point" data-value="${p.value}" data-stat="${statCategories[i].label}" 
                         data-stat-key="${statCategories[i].key}" data-team-index="${index}" />
                 `).join('')}

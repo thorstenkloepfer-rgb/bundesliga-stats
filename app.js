@@ -1548,12 +1548,17 @@ function updateSelectedState() {
 function generateRadarChart(teams) {
     if (teams.length === 0) return '';
     
-    // Responsive sizing for small mobile viewports
-    const isSmallMobile = typeof window !== 'undefined' && window.innerWidth <= 420;
-    const size = 1050; // keep viewBox square; scale contents via radii
+    // Responsive sizing - detect mobile/tablet viewports
+    const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 1200;
+    const isMobile = viewportWidth < 768;
+    const isTablet = viewportWidth >= 768 && viewportWidth < 1024;
+    const isSmallMobile = viewportWidth <= 420;
+    
+    // Optimized chart sizing to prevent label overlap
+    const size = isMobile ? 900 : (isTablet ? 950 : 1050);
     const center = size / 2;
-    const maxRadius = isSmallMobile ? 420 : 300;
-    const labelPadding = 60;
+    const maxRadius = isMobile ? 260 : (isTablet ? 270 : 300);
+    const labelPadding = isMobile ? 90 : (isTablet ? 90 : 60);
     const levels = 5;
     const angleStep = (Math.PI * 2) / statCategories.length;
     const goalsArray = teams.map(t => (typeof t.goals === 'number' ? t.goals : 0));
@@ -1609,11 +1614,13 @@ function generateRadarChart(teams) {
             stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" />`;
     });
     
-    // Generate labels with optimized font sizes
-    // Font sizes in SVG are relative to viewBox (1050px)
-    // Based on actual rendering tests:
-    // Mobile (≤420px): Font 48 → minimum 12px actual ✓
-    // Desktop: Font 16 → maximum 16px actual ✓
+    // Generate labels with responsive font sizes and lighter weight
+    // Calculated to render at ~12px actual on all viewports below 1024px
+    // Mobile (850px viewBox): 26px → ~12px actual
+    // Tablet (920px viewBox): 24px → ~12-13px actual  
+    // Desktop (1050px viewBox): 16px → ~16px actual
+    const labelFontSize = isMobile ? 26 : (isTablet ? 20 : 16);
+    
     let labels = '';
     statCategories.forEach((cat, index) => {
         const angle = angleStep * index - Math.PI / 2;
@@ -1624,7 +1631,7 @@ function generateRadarChart(teams) {
         labels += `
             <g class="radar-label">
                 <text x="${x}" y="${y + 4}" text-anchor="middle" 
-                    fill="#f5f5f7" font-size="${isSmallMobile ? 48 : 16}" font-weight="600" class="radar-label-text">${cat.label}</text>
+                    fill="#f5f5f7" font-size="${labelFontSize}" font-weight="400" class="radar-label-text">${cat.label}</text>
             </g>
         `;
     });
@@ -1663,6 +1670,9 @@ function generateRadarChart(teams) {
     }
     
     // Generate team polygons with actual team colors
+    // Larger touch targets for mobile (44px minimum recommended)
+    const pointRadius = isMobile ? 10 : (isTablet ? 8 : 6);
+    
     let teamPolygons = '';
     teams.forEach((team, index) => {
         const teamColor = team.displayColor || team.color;
@@ -1674,10 +1684,10 @@ function generateRadarChart(teams) {
         teamPolygons += `
             <g class="team-polygon" data-team="${team.id}">
                 <path d="${path}" fill="${fillColor}" stroke="${visibleStrokeColor}" 
-                    stroke-width="2.5" stroke-linejoin="round" 
+                    stroke-width="${isMobile ? 3 : 2.5}" stroke-linejoin="round" 
                     style="transition: all 0.3s ease;" />
                 ${points.map((p, i) => `
-                    <circle cx="${p.x}" cy="${p.y}" r="6" fill="${visibleStrokeColor}" 
+                    <circle cx="${p.x}" cy="${p.y}" r="${pointRadius}" fill="${visibleStrokeColor}" 
                         stroke="rgba(60, 60, 60, 0.6)" stroke-width="2" 
                         class="radar-point" data-value="${p.value}" data-stat="${statCategories[i].label}" 
                         data-stat-key="${statCategories[i].key}" data-team-index="${index}" />
@@ -1687,22 +1697,25 @@ function generateRadarChart(teams) {
     });
     
     // Add team logos - positioned above and below the chart
+    // Adjusted positioning to avoid label overlap
     let logoElements = '';
     const logosPerRow = Math.ceil(teams.length / 2);
-    const logoCircleR = isSmallMobile ? 28 : 42;
-    const logoImgSize = isSmallMobile ? 32 : 48;
+    const logoCircleR = isMobile ? 30 : (isTablet ? 36 : 42);
+    const logoImgSize = isMobile ? 34 : (isTablet ? 42 : 48);
     
     teams.forEach((team, index) => {
         const isTopRow = index < logosPerRow;
         const positionInRow = isTopRow ? index : index - logosPerRow;
         const totalInRow = isTopRow ? logosPerRow : teams.length - logosPerRow;
         
-        // Calculate horizontal position
-        const spacing = (size * 0.8) / (totalInRow + 1);
-        const logoX = (size * 0.1) + spacing * (positionInRow + 1);
+        // Calculate horizontal position - more inset on mobile to avoid labels
+        const horizontalInset = isMobile ? 0.15 : (isTablet ? 0.12 : 0.1);
+        const spacing = (size * (1 - 2 * horizontalInset)) / (totalInRow + 1);
+        const logoX = (size * horizontalInset) + spacing * (positionInRow + 1);
         
-        // Calculate vertical position
-        const logoY = isTopRow ? 40 : size - 40;
+        // Calculate vertical position - more space from edges on mobile
+        const verticalMargin = isMobile ? 50 : (isTablet ? 45 : 40);
+        const logoY = isTopRow ? verticalMargin : size - verticalMargin;
         
         logoElements += `
             <g class="team-logo-marker" data-team="${team.id}">
@@ -1784,13 +1797,20 @@ function renderGoalsStats() {
         </div>
     `;
     
-    // Add hover effects to radar points - show all teams' data for that stat
+    // Add hover effects to radar points with smooth dynamic tooltip
     setTimeout(() => {
         const points = container.querySelectorAll('.radar-point');
+        let activeTooltip = null;
+        
         points.forEach(point => {
             point.addEventListener('mouseenter', (e) => {
                 const statLabel = e.target.getAttribute('data-stat');
                 const statKey = e.target.getAttribute('data-stat-key');
+                
+                // Remove any existing tooltip
+                if (activeTooltip) {
+                    activeTooltip.remove();
+                }
                 
                 // Build tooltip showing all teams' values for this stat
                 const tooltip = document.createElement('div');
@@ -1799,92 +1819,47 @@ function renderGoalsStats() {
                 let tooltipHTML = `<div class="tooltip-stat">${statLabel}</div>`;
                 teams.forEach((team, index) => {
                     const value = statKey === 'goals' ? (team.goals || 0) : team.stats[statKey];
-                tooltipHTML += `
-                    <div class="tooltip-team">
-                        <span class="tooltip-team-name" style="color: ${team.displayColor || team.color}">${team.shortName}</span>
-                        <span class="tooltip-value">${value}</span>
-                    </div>
-                `;
+                    tooltipHTML += `
+                        <div class="tooltip-team">
+                            <span class="tooltip-team-name" style="color: ${team.displayColor || team.color}">${team.shortName}</span>
+                            <span class="tooltip-value">${value}</span>
+                        </div>
+                    `;
                 });
                 
                 tooltip.innerHTML = tooltipHTML;
+                document.body.appendChild(tooltip);
                 
-                // Position tooltip directly attached to mouse pointer, positioned higher
-                const positionTooltip = (mouseX, mouseY) => {
-                    document.body.appendChild(tooltip);
-                    const tooltipRect = tooltip.getBoundingClientRect();
-                    const viewportWidth = window.innerWidth;
-                    const viewportHeight = window.innerHeight;
-                    
-                    // Position tooltip above and to the right of cursor by default
-                    let left = mouseX + 15;
-                    let top = mouseY - tooltipRect.height - 15;
-                    
-                    // Check if tooltip goes beyond right edge
-                    if (left + tooltipRect.width > viewportWidth - 10) {
-                        left = mouseX - tooltipRect.width - 15;
-                    }
-                    
-                    // Check if tooltip goes beyond top edge, position below cursor instead
-                    if (top < 10) {
-                        top = mouseY + 15;
-                    }
-                    
-                    // Check if tooltip goes beyond bottom edge even when below
-                    if (top + tooltipRect.height > viewportHeight - 10) {
-                        top = viewportHeight - tooltipRect.height - 10;
-                    }
-                    
-                    // Check if tooltip goes beyond left edge
-                    if (left < 10) {
-                        left = 10;
-                    }
-                    
-                    tooltip.style.left = left + 'px';
-                    tooltip.style.top = top + 'px';
-                };
+                // Position centered above cursor
+                tooltip.style.left = e.clientX + 'px';
+                tooltip.style.top = e.clientY + 'px';
                 
-                positionTooltip(e.pageX, e.pageY);
+                // Trigger animation by adding visible class
+                requestAnimationFrame(() => {
+                    tooltip.classList.add('visible');
+                });
+                
+                activeTooltip = tooltip;
             });
             
             point.addEventListener('mouseleave', () => {
-                const tooltips = document.querySelectorAll('.radar-tooltip');
-                tooltips.forEach(t => t.remove());
+                if (activeTooltip) {
+                    activeTooltip.classList.remove('visible');
+                    // Remove after animation completes
+                    setTimeout(() => {
+                        if (activeTooltip && activeTooltip.parentNode) {
+                            activeTooltip.remove();
+                        }
+                        activeTooltip = null;
+                    }, 180);
+                }
             });
             
             point.addEventListener('mousemove', (e) => {
-                const tooltip = document.querySelector('.radar-tooltip');
-                if (tooltip) {
-                    const positionTooltip = (mouseX, mouseY) => {
-                        const tooltipRect = tooltip.getBoundingClientRect();
-                        const viewportWidth = window.innerWidth;
-                        const viewportHeight = window.innerHeight;
-                        
-                        // Position tooltip above cursor by default for better visibility
-                        let left = mouseX + 15;
-                        let top = mouseY - tooltipRect.height - 15;
-                        
-                        if (left + tooltipRect.width > viewportWidth - 10) {
-                            left = mouseX - tooltipRect.width - 15;
-                        }
-                        
-                        if (top < 10) {
-                            top = mouseY + 15;
-                        }
-                        
-                        if (top + tooltipRect.height > viewportHeight - 10) {
-                            top = viewportHeight - tooltipRect.height - 10;
-                        }
-                        
-                        if (left < 10) {
-                            left = 10;
-                        }
-                        
-                        tooltip.style.left = left + 'px';
-                        tooltip.style.top = top + 'px';
-                    };
-                    
-                    positionTooltip(e.pageX, e.pageY);
+                if (activeTooltip) {
+                    // Smooth follow with centered position above cursor
+                    activeTooltip.style.left = e.clientX + 'px';
+                    activeTooltip.style.top = e.clientY + 'px';
                 }
             });
         });

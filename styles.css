@@ -227,7 +227,7 @@ header h1 .emoji {
     padding: 10px 20px;
     border-radius: 100px;
     cursor: pointer;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
     font-weight: 500;
     transition: all 0.2s;
@@ -243,10 +243,10 @@ header h1 .emoji {
     background: rgba(40, 40, 40, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: #d1d5db;
-    padding: 10px 16px;
+    padding: 10px 20px;
     border-radius: 100px;
     cursor: pointer;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
     font-weight: 500;
     transition: all 0.2s;
@@ -304,7 +304,9 @@ header h1 .emoji {
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    padding: 10px;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
 }
 
 .radar-chart {
@@ -314,6 +316,7 @@ header h1 .emoji {
     height: auto;
     filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.4));
     animation: fadeInScale 0.6s ease-out;
+    touch-action: manipulation; /* Better touch handling */
 }
 
 @keyframes fadeInScale {
@@ -342,9 +345,9 @@ header h1 .emoji {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.radar-chart .radar-point:hover {
-    r: 8;
-    filter: drop-shadow(0 0 8px currentColor);
+.radar-chart .radar-point:hover,
+.radar-chart .radar-point:active {
+    filter: drop-shadow(0 0 8px currentColor) brightness(1.2);
 }
 
 .radar-label text {
@@ -353,6 +356,7 @@ header h1 .emoji {
 
 .radar-label-text {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+    font-weight: 500; /* Medium weight for better readability */
 }
 
 /* Radar Legend */
@@ -370,10 +374,10 @@ header h1 .emoji {
     align-items: center;
     gap: 10px;
     padding: 8px 14px;
-    background: transparent;
-    border-radius: 8px;
+    background: rgba(42, 42, 42, 0.633);
+    border-radius: 100px;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(60, 60, 60, 0.5);
+    border: 0px solid rgba(144, 144, 144, 0.633);
 }
 
 .legend-item:hover {
@@ -385,7 +389,7 @@ header h1 .emoji {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    box-shadow: 0 0 8px currentColor;
+    box-shadow: 0 0 0px currentColor;
 }
 
 .legend-logo {
@@ -412,10 +416,19 @@ header h1 .emoji {
     font-weight: 500;
     pointer-events: none;
     z-index: 10000;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    animation: tooltipFadeIn 0.15s ease-out;
     min-width: 200px;
+    opacity: 0;
+    transform: translate(-50%, -120%) scale(0.9);
+    transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                opacity 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
+}
+
+.radar-tooltip.visible {
+    opacity: 1;
+    transform: translate(-50%, -120%) scale(1);
 }
 
 .radar-tooltip .tooltip-stat {
@@ -448,11 +461,11 @@ header h1 .emoji {
 @keyframes tooltipFadeIn {
     from {
         opacity: 0;
-        transform: translateY(-5px);
+        transform: translate(-50%, -120%) scale(0.9);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate(-50%, -120%) scale(1);
     }
 }
 
@@ -598,7 +611,23 @@ header h1 .emoji {
     }
 
     .radar-chart {
-        max-width: 700px;
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .radar-container {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+    
+    .goals-stats {
+        padding: 20px 0;
+    }
+    
+    /* Ensure labels have breathing room and don't overlap */
+    .radar-label-text {
+        font-weight: 500;
     }
 }
 
@@ -640,23 +669,34 @@ header h1 .emoji {
     .radar-chart {
         max-width: 100%;
         width: 100%;
-        margin: 0 -15px;
-        padding: 0 15px;
-    }
-    
-    .radar-container {
-        padding: 0;
-        gap: 10px;
-        width: 100%;
         margin: 0;
     }
     
+    .radar-container {
+        padding: 0 !important;
+        margin: 0 !important;
+        gap: 10px;
+        width: 100%;
+        max-width: 100%;
+    }
+    
     .goals-stats {
-        margin: 0 -15px;
-        padding: 15px 15px;
+        margin: 0;
+        padding: 20px 0;
+    }
+    
+    .goals-stats h2 {
+        padding: 0 15px;
+    }
+    
+    .data-source {
+        padding: 0 15px;
     }
     
     /* Radar chart labels are now sized in SVG to scale properly with viewBox */
+    .radar-label-text {
+        font-weight: 500;
+    }
     
     .goals-stats h2 {
         font-size: 1.2rem;
@@ -795,22 +835,40 @@ header h1 .emoji {
 
 /* Very small mobile phones (e.g., 360-420 width) */
 @media (max-width: 420px) {
+    .container {
+        padding: 10px;
+    }
+    
     .radar-chart {
         max-width: 100%;
+        width: 100%;
     }
-    /* Ensure minimum legible font size for radar labels */
+    
+    .radar-container {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .goals-stats {
+        margin: 0;
+        padding: 15px 0;
+    }
+    
+    .goals-stats h2 {
+        padding: 0 10px;
+    }
+    
+    .data-source {
+        padding: 0 10px;
+    }
+    
+    /* Lighter font weight for better readability on small screens */
     .radar-label-text {
-        font-size: 12px !important;
+        font-weight: 500;
     }
+    
     .legend-name {
         font-size: 13px !important;
-    }
-}
-
-/* Extra safety for viewports under 400px */
-@media (max-width: 400px) {
-    .radar-label-text {
-        font-size: 12px !important;
     }
 }
 

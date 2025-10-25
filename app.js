@@ -1380,6 +1380,7 @@ const sampleGoals = {
 // State management
 let selectedTeams = [];
 let persistentTeamColors = {}; // Store assigned colors persistently
+let animatedTeams = new Set(); // Track teams that have already been animated
 
 // Color similarity detection
 function colorDistance(color1, color2) {
@@ -1507,6 +1508,7 @@ function setupEventListeners() {
     document.getElementById('clearSelection').addEventListener('click', () => {
         selectedTeams = [];
         persistentTeamColors = {}; // Reset color assignments when clearing
+        animatedTeams.clear(); // Reset animation tracking when clearing
         updateUI();
     });
 }
@@ -1516,6 +1518,7 @@ function toggleTeamSelection(teamId) {
     const index = selectedTeams.indexOf(teamId);
     if (index > -1) {
         selectedTeams.splice(index, 1);
+        animatedTeams.delete(teamId); // Remove from animation tracking when deselected
         // Don't remove from persistentTeamColors to maintain consistency
     } else {
         selectedTeams.push(teamId);
@@ -1601,7 +1604,8 @@ function generateRadarChart(teams) {
         const radius = (maxRadius / levels) * level;
         const opacity = level === levels ? 0.3 : 0.1;
         gridLines += `<circle cx="${center}" cy="${center}" r="${radius}" 
-            fill="none" stroke="rgba(255, 255, 255, ${opacity})" stroke-width="1" />`;
+            fill="none" stroke="rgba(255, 255, 255, ${opacity})" stroke-width="1" 
+            class="radar-grid-line" />`;
     }
     
     // Generate axis lines
@@ -1611,7 +1615,8 @@ function generateRadarChart(teams) {
         const endX = center + maxRadius * Math.cos(angle);
         const endY = center + maxRadius * Math.sin(angle);
         axisLines += `<line x1="${center}" y1="${center}" x2="${endX}" y2="${endY}" 
-            stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" />`;
+            stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" 
+            class="radar-axis-line" />`;
     });
     
     // Generate labels with responsive font sizes and lighter weight
@@ -1681,17 +1686,28 @@ function generateRadarChart(teams) {
         const points = getTeamPoints(team);
         const path = createPath(points);
         
+        // Check if this team is new (hasn't been animated before)
+        const isNewTeam = !animatedTeams.has(team.id);
+        if (isNewTeam) {
+            animatedTeams.add(team.id);
+        }
+        
         teamPolygons += `
-            <g class="team-polygon" data-team="${team.id}">
+            <g class="team-polygon ${isNewTeam ? 'team-polygon-new' : ''}" data-team="${team.id}">
                 <path d="${path}" fill="${fillColor}" stroke="${visibleStrokeColor}" 
-                    stroke-width="${isMobile ? 3 : 2.5}" stroke-linejoin="round" 
-                    style="transition: all 0.3s ease;" />
-                ${points.map((p, i) => `
+                    stroke-width="${isMobile ? 2 : 1.5}" stroke-linejoin="round" 
+                    style="transition: all 0.3s ease;${isNewTeam ? ` animation-delay: ${index * 0.12}s;` : ''}" />
+                ${points.map((p, i) => {
+                    // Stagger animation delay based on point index for circular build-up effect
+                    const animationDelay = (index * 0.15) + (i * 0.08);
+                    return `
                     <circle cx="${p.x}" cy="${p.y}" r="${pointRadius}" fill="${visibleStrokeColor}" 
                         stroke="rgba(60, 60, 60, 0.6)" stroke-width="2" 
-                        class="radar-point" data-value="${p.value}" data-stat="${statCategories[i].label}" 
-                        data-stat-key="${statCategories[i].key}" data-team-index="${index}" />
-                `).join('')}
+                        class="radar-point ${isNewTeam ? 'radar-point-new' : ''}" data-value="${p.value}" data-stat="${statCategories[i].label}" 
+                        data-stat-key="${statCategories[i].key}" data-team-index="${index}"
+                        style="${isNewTeam ? `animation-delay: ${animationDelay}s;` : ''}" />
+                `;
+                }).join('')}
             </g>
         `;
     });
